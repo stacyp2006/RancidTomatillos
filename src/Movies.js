@@ -2,7 +2,7 @@ import React from 'react';
 import Card from './Card.js';
 
 const Movies = (props) => {
-  const movieCards = props.movies.map(movies => {
+  const movieCards = props.moviesList.map(movie => {
     return (
       <Card
         id={movie.id}
