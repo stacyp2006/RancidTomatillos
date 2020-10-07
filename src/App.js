@@ -20,9 +20,10 @@ class App extends Component {
 
   render() {
     return(
-      <section>
-        
-      </section>
+      <main>
+        <h1>Movies and such</h1>
+        <Movies moviesList={this.state.movies}/>
+      </main>
     )
   }
 }
