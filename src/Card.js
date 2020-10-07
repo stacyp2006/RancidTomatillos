@@ -1,9 +1,10 @@
 import React from 'react';
+import './Card.css';
 
 const Card = (props) => {
   return (
-    <div className={props.id}>
-      <img src={props.posterPath} />
+    <div id={props.id} className='poster-card'>
+      <img className='poster' src={props.posterPath} alt='{props.title} poster'/>
     </div>
   )
 }
