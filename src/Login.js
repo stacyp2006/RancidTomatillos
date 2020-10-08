@@ -6,7 +6,9 @@ class Login extends Component {
   constructor() {
     super();
     this.state = {
-      user: {}
+      email: '',
+      id: '',
+      name: ''
     }
   }
 
@@ -18,7 +20,11 @@ class Login extends Component {
       body: JSON.stringify(userInfo)
     })
     .then(response => response.json())
-    .then(data => this.setState({user: data}))
+    .then(data => this.setState({
+      email: data.user.email,
+      id: data.user.id,
+      name: data.user.name
+    }))
   }
 
   render() {
