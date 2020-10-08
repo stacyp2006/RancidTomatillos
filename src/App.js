@@ -18,9 +18,10 @@ class App extends Component {
   }
 
   render() {
-    return(
+    return (
       <main>
         <h1>Movies and such</h1>
+        <h2>Welcome, Filmbuff</h2>
         <Movies moviesList={this.state.movies}/>
       </main>
     )
