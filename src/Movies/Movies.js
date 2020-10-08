@@ -1,5 +1,5 @@
 import React from 'react';
-import Card from './Card.js';
+import Card from '../Card/Card';
 
 const Movies = (props) => {
   const movieCards = props.moviesList.map(movie => {
