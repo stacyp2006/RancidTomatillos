@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import Movies from './Movies.js';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      movies: []
+    }
+  }
+
+  componentDidMount() {
+    fetch('https://rancid-tomatillos.herokuapp.com/api/v2/movies')
+      .then(response => response.json())
+      .then(data => this.setState({movies: data.movies}))
+      .catch(error => console.log('error'))
+  }
+
+  render() {
+    return (
+      <main>
+        <h1>Movies and such</h1>
+        <h2>Welcome, Filmbuff</h2>
+        <Movies moviesList={this.state.movies}/>
+      </main>
+    )
+  }
 }
 
 export default App;
