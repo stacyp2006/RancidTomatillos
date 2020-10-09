@@ -57,5 +57,5 @@ class Login extends Component {
     )
   }
 }
-
+//Need functionality for reloading app page with conditionals for login info accuracy. 
 export default Login;
