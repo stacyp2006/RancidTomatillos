@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import './ShowPage.css';
 
 class ShowPage extends Component {
-  constructor() {
+  constructor(props) {
     super(props);
 
     this.state = {
@@ -19,7 +19,6 @@ class ShowPage extends Component {
       .then(response => response.json())
       .then(data => this.setState({movie: data.movie}))
       .catch(error => console.log('error'))
-
   }
 
   render () {
@@ -28,7 +27,6 @@ class ShowPage extends Component {
         <h1>title</h1>
         <h2>release date</h2>
         <h2>avg rating</h2>
-        <Videos videosList={this.state.videos}/>
       </section>
     )
   }

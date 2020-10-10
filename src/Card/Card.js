@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Login from '../Login/Login.js';
 import ShowPage from '../ShowPage/ShowPage';
 import { Route, Switch, Link, NavLink } from 'react-router-dom';
 import './Card.css';
@@ -7,13 +8,13 @@ import './Card.css';
 const Card = (props) => {
   return (
     <div id={props.id} className='poster-card'>
-      <button>
+      <Link to={'/movies/' + props.id}>
         <img className='poster' src={props.posterPath} alt= 'movie poster'/>
-        <article>
-          <h2>{props.averageRating}</h2>
-        </article>
-        <Route path={'/movies/' + props.id} render={() => <ShowPage movieID={props.id}/>} />
-      </button>
+      </Link>
+      <article>
+        <h2>{props.averageRating}</h2>
+      </article>
+      <Route path={'/movies/617708'} render={() => <ShowPage />} />
     </div>
   )
 }
@@ -25,3 +26,4 @@ Card.propTypes = {
   posterPath: PropTypes.string.isRequired,
   averageRating: PropTypes.number.isRequired
 }
+// '/movies/' + props.id
