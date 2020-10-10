@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Route, Switch, Link, NavLink } from 'react-router-dom';
 import Homepage from '../Homepage/Homepage.js'
 // import Movies from '../Movies/Movies.js';
-// import Login from '../Login/Login.js';
+import Login from '../Login/Login.js';
 import './App.css';
 
 class App extends Component {
@@ -27,6 +27,7 @@ class App extends Component {
           <Link to="/">Home</Link> |
           <Link to="/login">Login</Link>
         </nav>
+        <Route path="/login" render={() => <Login />} />
         <Route exact path="/" render={() => <Homepage home={this.state}/>} />
       </main>
     )
