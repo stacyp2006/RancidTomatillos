@@ -8,13 +8,15 @@ import './Card.css';
 const Card = (props) => {
   return (
     <div id={props.id} className='poster-card'>
+      <nav>
       <Link to={'/movies/' + props.id}>
         <img className='poster' src={props.posterPath} alt= 'movie poster'/>
       </Link>
+      </nav>
       <article>
         <h2>{props.averageRating}</h2>
       </article>
-      <Route path={'/movies/617708'} render={() => <ShowPage />} />
+      <Route path={'/movies/' + props.id} render={() => <ShowPage movieID={props.id} />} />
     </div>
   )
 }
