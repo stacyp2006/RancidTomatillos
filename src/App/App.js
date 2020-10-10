@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import Movies from '../Movies/Movies.js';
+import { Route, Switch, Link, NavLink } from 'react-router-dom';
+import Homepage from '../Homepage/Homepage.js'
+// import Movies from '../Movies/Movies.js';
+// import Login from '../Login/Login.js';
 import './App.css';
 
 class App extends Component {
@@ -20,9 +23,11 @@ class App extends Component {
   render() {
     return (
       <main>
-        <h1>Movies and such</h1>
-        <h2>Welcome, Filmbuff</h2>
-        <Movies moviesList={this.state.movies}/>
+        <nav>
+          <Link to="/">Home</Link> |
+          <Link to="/login">Login</Link>
+        </nav>
+        <Route exact path="/" render={() => <Homepage home={this.state}/>} />
       </main>
     )
   }
