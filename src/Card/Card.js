@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './Card.css';
 
 const Card = (props) => {
@@ -15,3 +16,9 @@ const Card = (props) => {
 }
 
 export default Card;
+
+Card.propTypes = {
+  id: PropTypes.number.isRequired,
+  posterPath: PropTypes.string.isRequired,
+  averageRating: PropTypes.number.isRequired
+}

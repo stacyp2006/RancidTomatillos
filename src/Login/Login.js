@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Route, Switch, Link, NavLink } from 'react-router-dom';
 import './Login.css';
 
 
@@ -7,13 +8,14 @@ class Login extends Component {
     super();
     this.state = {
       email: '',
+      password: '',
       id: '',
       name: ''
     }
   }
 
-  componentDidMount() {
-    const userInfo = { email: 'rick@turing.io',password: 'asdf123' };
+  submitLogin() {
+    const userInfo = { email: this.state.email, password: this.state.password };
     fetch('https://rancid-tomatillos.herokuapp.com/api/v2/login', {
       method: 'POST',
       headers: {"Content-Type": "application/json"},
@@ -27,6 +29,10 @@ class Login extends Component {
     }))
   }
 
+  updateValue(event) {
+    this.setState({[event.target.name]: event.target.value})
+  }
+
   render() {
     return (
       <form>
@@ -34,20 +40,23 @@ class Login extends Component {
         type='text'
         placeholder='email'
         name='email'
-
+        value={this.state.email}
+        onChange={this.updateValue}
         />
         <input
         type='text'
         placeholder='password'
         name='password'
-
+        value={this.state.password}
+        onChange={this.updateValue}
         />
-        <button>
+        <button
+        onClick={this.submitLogin}>
         login
         </button>
       </form>
     )
   }
 }
-
+//Need functionality for reloading app page with conditionals for login info accuracy.
 export default Login;
