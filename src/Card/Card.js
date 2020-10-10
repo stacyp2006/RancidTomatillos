@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ShowPage from '../ShowPage/ShowPage';
+import { Route, Switch, Link, NavLink } from 'react-router-dom';
 import './Card.css';
 
 const Card = (props) => {
@@ -10,6 +12,7 @@ const Card = (props) => {
         <article>
           <h2>{props.averageRating}</h2>
         </article>
+        <Route path={'/movies/' + props.id} render={() => <ShowPage movieID={props.id}/>} />
       </button>
     </div>
   )
