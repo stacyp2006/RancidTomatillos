@@ -17,7 +17,7 @@ class App extends Component {
     fetch('https://rancid-tomatillos.herokuapp.com/api/v2/movies')
       .then(response => response.json())
       .then(data => this.setState({movies: data.movies}))
-      .catch(error => console.log('error'))
+      .catch(error => console.log('app error'))
   }
 
   render() {
@@ -29,9 +29,17 @@ class App extends Component {
         </nav>
         <Route path="/login" render={() => <Login />} />
         <Route exact path="/" render={() => <Homepage home={this.state}/>} />
+        <Route path='/movies/:id'
+          render={({ match }) =>{
+            const { id } = match.params;
+            const movieToRender = this.state.movies.find(movie => movie.id === parseInt(id));
+            return <ShowPage {...movieToRender} />
+          }}
+        />
       </main>
     )
   }
 }
 
+// movieID={props.id}
 export default App;
