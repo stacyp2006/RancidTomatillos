@@ -16,21 +16,25 @@ class RatingForm extends Component {
   }
 
   render() {
-    <div>
-      <form>
-        <label>Rate This Movie</label>
-        <input
-        type='number'
-        min='1' max='10'
-        name='rating'
-        value=''
-        />
-        <input
-        type='submit'
-        onClick={this.updateValue}
-        />
-      </form>
-      <button>Delete Rating</button>
-    </div>
+    return(
+      <div>
+        <form>
+          <label>Rate This Movie</label>
+          <input
+          type='number'
+          min='1' max='10'
+          name='rating'
+          value=''
+          />
+          <input
+          type='submit'
+          onClick={this.updateValue}
+          />
+        </form>
+        <button>Delete Rating</button>
+      </div>
+    )
   }
 }
+
+export default RatingForm;
