@@ -1,6 +1,6 @@
 import React from 'react';
 import Movies from '../Movies/Movies.js';
-// import Login from '../Login/Login.js';
+import ShowPage from '../ShowPage/ShowPage.js';
 import { Route, Switch, Link, NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import './Homepage.css';

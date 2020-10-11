@@ -2,7 +2,7 @@ import React from 'react';
 import Card from '../Card/Card';
 
 const Movies = (props) => {
-  console.log(props)
+  // console.log(props)
   let movieCards;
   if (props.moviesList.length !== 0) {
     movieCards = props.moviesList.map(movie => {
