@@ -16,7 +16,6 @@ const Card = (props) => {
       <article>
         <h2>{props.averageRating}</h2>
       </article>
-      <Route path={'/movies/' + props.id} render={() => <ShowPage movieID={props.id} />} />
     </div>
   )
 }
