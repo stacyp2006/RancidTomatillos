@@ -13,6 +13,7 @@ class ShowPage extends Component {
       videos: [],
       userRating: ''
     }
+    console.log(props);
   }
 
   fetchMovieObj() {
@@ -76,4 +77,3 @@ class ShowPage extends Component {
 
 export default ShowPage;
 // <Videos allVideos={this.state.videos} />
-//
