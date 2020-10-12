@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Switch, Link, NavLink } from 'react-router-dom';
 import './Login.css';
+import Homepage from '../Homepage/Homepage.js';
 
 
 class Login extends Component {
@@ -14,7 +15,8 @@ class Login extends Component {
     }
   }
 
-  submitLogin() {
+  submitLogin = (e) => {
+    e.preventDefault();
     const userInfo = { email: this.state.email, password: this.state.password };
     fetch('https://rancid-tomatillos.herokuapp.com/api/v2/login', {
       method: 'POST',
@@ -27,9 +29,18 @@ class Login extends Component {
       id: data.user.id,
       name: data.user.name
     }))
+    .then(data => this.createUser())
+    .catch(error => console.log('login error'))
+  }
+//move fetch to apiCalls?
+
+  createUser = () => {
+    const { addUser } = this.props;
+    let userState = this.state;
+    addUser(userState);
   }
 
-  updateValue(event) {
+  updateValue = (event) => {
     this.setState({[event.target.name]: event.target.value})
   }
 
