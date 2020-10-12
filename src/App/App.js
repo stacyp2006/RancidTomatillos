@@ -24,7 +24,7 @@ class App extends Component {
     return (
       <main>
         <nav>
-          <Link to="/">Home</Link> |
+          <Link to="/">Home</Link> 
           <Link to="/login">Login</Link>
         </nav>
         <Route path="/login" render={() => <Login />} />
