@@ -9,8 +9,14 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      movies: []
+      movies: [],
+      loggedIn: false,
+      user: {}
     }
+  }
+
+  addUser = (userState) => {
+    this.setState({loggedIn: true, user: userState});
   }
 
   componentDidMount() {
@@ -24,10 +30,10 @@ class App extends Component {
     return (
       <main>
         <nav>
-          <Link to="/">Home</Link> 
-          <Link to="/login">Login</Link>
+          <Link to="/">Home</Link> |
+          {!this.state.loggedIn && <Link to="/login">Login</Link>}
         </nav>
-        <Route path="/login" render={() => <Login />} />
+        <Route path="/login" render={() => <Login addUser={this.addUser} />} />
         <Route exact path="/" render={() => <Homepage home={this.state}/>} />
         <Route path='/movies/:id'
           render={({ match }) =>{
@@ -43,3 +49,5 @@ class App extends Component {
 
 // movieID={props.id}
 export default App;
+
+// {this.state.loggedIn && <Link to="/"}
