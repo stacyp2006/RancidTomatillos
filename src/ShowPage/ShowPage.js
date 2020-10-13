@@ -46,13 +46,14 @@ class ShowPage extends Component {
           <h2>{film.revenue}</h2>
           <h2>{film.runtime}</h2>
           <h2>{film.average_rating}</h2>
-          <h2>User Rating: </h2>
           <ul>
             <li>{film.genres}</li>
           </ul>
         </section>
         <section>
+        {this.props.userInfo.id &&
           <RatingForm movieInfo={this.state.movie} userInfo={this.props.userInfo} />
+        }
         </section>
       </main>
     )

@@ -34,6 +34,7 @@ class RatingForm extends Component {
   render() {
     return(
       <div>
+        <h2>User Rating: </h2>
         <form>
           <label>Rate This Movie</label>
           <input
