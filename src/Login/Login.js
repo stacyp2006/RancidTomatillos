@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Route, Switch, Link, withRouter, NavLink } from 'react-router-dom';
+import { Route, Link, withRouter } from 'react-router-dom';
 import './Login.css';
-import Homepage from '../Homepage/Homepage.js';
 
 
 class Login extends Component {
@@ -18,23 +17,30 @@ class Login extends Component {
   submitLogin = (e) => {
     e.preventDefault();
     const userInfo = { email: this.state.email, password: this.state.password };
-    fetch('https://rancid-tomatillos.herokuapp.com/api/v2/login', {
-      method: 'POST',
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify(userInfo)
-    })
-    .then(response => response.json())
-    .then(data => this.setState({
-      email: data.user.email,
-      id: data.user.id,
-      name: data.user.name
-    }))
-    .then(data => this.createUser())
-    .then(data => this.goToHome())
-    .catch(error => console.log('login error'))
+    if (this.state.email === 'rick@turing.io' && this.state.password === 'asdf123') {
+      fetch('https://rancid-tomatillos.herokuapp.com/api/v2/login', {
+        method: 'POST',
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(userInfo)
+      })
+      .then(response => response.json())
+      .then(data => this.setState({
+        email: data.user.email,
+        id: data.user.id,
+        name: data.user.name
+      }))
+      .then(data => this.createUser())
+      .then(data => this.goToHome())
+      .catch(error => console.log('login error'))
+    } else {
+      this.resetInputs();
+      alert('Invalid login information. Please try again.')
+    }
   }
 //move fetch to apiCalls?
-
+  resetInputs = () => {
+    this.setState({email: '', password: ''})
+  }
   createUser = () => {
     const { addUser } = this.props;
     let userState = this.state;

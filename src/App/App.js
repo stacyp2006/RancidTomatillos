@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch, Link, withRouter, NavLink } from 'react-router-dom';
+import { Route, Link, withRouter } from 'react-router-dom';
 import Homepage from '../Homepage/Homepage.js'
 import Login from '../Login/Login.js';
 import ShowPage from '../ShowPage/ShowPage';
@@ -55,7 +55,4 @@ class App extends Component {
   }
 }
 
-// movieID={props.id}
 export default withRouter(App);
-
-// {this.state.loggedIn && <Link to="/"}
