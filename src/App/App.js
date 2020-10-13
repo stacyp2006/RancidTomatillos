@@ -30,8 +30,8 @@ class App extends Component {
     return (
       <main>
         <nav>
-          <Link to="/">Home</Link> |
-          {!this.state.loggedIn && <Link to="/login">Login</Link>}
+          <Link to="/">Home</Link> {' '}
+          {!this.state.loggedIn && <Link to="/login">Login</Link>} {' '} {this.state.loggedIn && <Link to="/">Logout</Link>}
         </nav>
         <Route path="/login" render={() => <Login addUser={this.addUser} />} />
         <Route exact path="/" render={() => <Homepage home={this.state}/>} />

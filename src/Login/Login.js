@@ -16,7 +16,7 @@ class Login extends Component {
   }
 
   submitLogin = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     const userInfo = { email: this.state.email, password: this.state.password };
     fetch('https://rancid-tomatillos.herokuapp.com/api/v2/login', {
       method: 'POST',
@@ -61,10 +61,11 @@ class Login extends Component {
         value={this.state.password}
         onChange={this.updateValue}
         />
-        <button
-        onClick={this.submitLogin}>
-        login
-        </button>
+        <Link to="/" onClick={this.submitLogin}>
+          <button>
+            login
+          </button>
+        </Link>
       </form>
     )
   }
