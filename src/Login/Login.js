@@ -34,13 +34,15 @@ class Login extends Component {
       .catch(error => console.log('login error'))
     } else {
       this.resetInputs();
-      alert('Invalid login information. Please try again.')
+      alert('Invalid login information. Please try again.');
     }
   }
+//refactor error handling for 'User not found'
 //move fetch to apiCalls?
   resetInputs = () => {
     this.setState({email: '', password: ''})
   }
+
   createUser = () => {
     const { addUser } = this.props;
     let userState = this.state;
@@ -81,5 +83,5 @@ class Login extends Component {
     )
   }
 }
-//Need functionality for reloading app page with conditionals for login info accuracy.
+
 export default withRouter(Login);
