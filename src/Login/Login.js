@@ -19,7 +19,7 @@ class Login extends Component {
     e.preventDefault();
     const userInfo = { email: this.state.email, password: this.state.password };
     if (this.state.email === 'rick@turing.io' && this.state.password === 'asdf123') {
-      loginFetch()
+      loginFetch(userInfo)
       .then(data => this.setState({
         email: data.user.email,
         id: data.user.id,

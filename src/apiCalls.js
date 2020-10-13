@@ -3,7 +3,7 @@ export const moviesFetch = () => {
   .then(response => response.json())
 };
 
-export const loginFetch = () => {
+export const loginFetch = (userInfo) => {
   return fetch('https://rancid-tomatillos.herokuapp.com/api/v2/login', {
     method: 'POST',
     headers: {"Content-Type": "application/json"},
@@ -12,7 +12,7 @@ export const loginFetch = () => {
   .then(response => response.json())
 };
 
-export const singleMovieFetch = () => {
-  return fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${this.props.id}`)
+export const singleMovieFetch = (filmID) => {
+  return fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${filmID}`)
     .then(response => response.json())
 };

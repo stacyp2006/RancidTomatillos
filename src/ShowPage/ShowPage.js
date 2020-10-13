@@ -15,9 +15,9 @@ class ShowPage extends Component {
   }
 
   componentDidMount() {
-    singleMovieFetch()
+    singleMovieFetch(this.props.id)
       .then(data => this.setState({movie: data.movie}))
-      .catch(error => console.log('movie fetch error'))
+      .catch(error => console.log({error: error.message}))
   }
 
   // getGenres() {
