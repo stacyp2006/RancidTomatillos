@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Link, withRouter } from 'react-router-dom';
 import './Login.css';
+import { loginFetch } from '../apiCalls.js';
 
 
 class Login extends Component {
@@ -18,12 +19,7 @@ class Login extends Component {
     e.preventDefault();
     const userInfo = { email: this.state.email, password: this.state.password };
     if (this.state.email === 'rick@turing.io' && this.state.password === 'asdf123') {
-      fetch('https://rancid-tomatillos.herokuapp.com/api/v2/login', {
-        method: 'POST',
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify(userInfo)
-      })
-      .then(response => response.json())
+      loginFetch()
       .then(data => this.setState({
         email: data.user.email,
         id: data.user.id,
