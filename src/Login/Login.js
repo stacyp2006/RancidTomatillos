@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch, Link, NavLink } from 'react-router-dom';
+import { Route, Switch, Link, withRouter, NavLink } from 'react-router-dom';
 import './Login.css';
 import Homepage from '../Homepage/Homepage.js';
 
@@ -16,7 +16,7 @@ class Login extends Component {
   }
 
   submitLogin = (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     const userInfo = { email: this.state.email, password: this.state.password };
     fetch('https://rancid-tomatillos.herokuapp.com/api/v2/login', {
       method: 'POST',
@@ -30,6 +30,7 @@ class Login extends Component {
       name: data.user.name
     }))
     .then(data => this.createUser())
+    .then(data => this.goToHome())
     .catch(error => console.log('login error'))
   }
 //move fetch to apiCalls?
@@ -38,6 +39,10 @@ class Login extends Component {
     const { addUser } = this.props;
     let userState = this.state;
     addUser(userState);
+  }
+
+  goToHome = () => {
+    this.props.history.push('/')
   }
 
   updateValue = (event) => {
@@ -61,8 +66,8 @@ class Login extends Component {
         value={this.state.password}
         onChange={this.updateValue}
         />
-        <Link to="/" onClick={this.submitLogin}>
-          <button>
+        <Link to="/">
+          <button onClick={this.submitLogin}>
             login
           </button>
         </Link>
@@ -71,4 +76,4 @@ class Login extends Component {
   }
 }
 //Need functionality for reloading app page with conditionals for login info accuracy.
-export default Login;
+export default withRouter(Login);

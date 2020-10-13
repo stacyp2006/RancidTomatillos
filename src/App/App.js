@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch, Link, NavLink } from 'react-router-dom';
+import { Route, Switch, Link, withRouter, NavLink } from 'react-router-dom';
 import Homepage from '../Homepage/Homepage.js'
 import Login from '../Login/Login.js';
 import ShowPage from '../ShowPage/ShowPage';
@@ -20,7 +20,7 @@ class App extends Component {
   }
 
   logout = (e) => {
-    this.setState({ loggedIn: true, user: {} });
+    this.setState({ loggedIn: false, user: {} });
   }
 
   componentDidMount() {
@@ -35,7 +35,11 @@ class App extends Component {
       <main>
         <nav>
           <Link to="/">Home</Link> {' '}
-          {!this.state.loggedIn && <Link to="/login">Login</Link>} {' '} {this.state.loggedIn && <Link to="/">Logout</Link>}
+          {!this.state.loggedIn && <Link to="/login">Login</Link>} {' '}
+          {this.state.loggedIn &&
+            <Link onClick={this.logout} to="/">
+             Logout
+            </Link>}
         </nav>
         <Route path="/login" render={() => <Login addUser={this.addUser} />} />
         <Route exact path="/" render={() => <Homepage home={this.state}/>} />
@@ -52,6 +56,6 @@ class App extends Component {
 }
 
 // movieID={props.id}
-export default App;
+export default withRouter(App);
 
 // {this.state.loggedIn && <Link to="/"}
