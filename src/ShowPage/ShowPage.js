@@ -51,9 +51,9 @@ class ShowPage extends Component {
             <li>{film.genres}</li>
           </ul>
         </section>
-          <section>
-            <RatingForm />
-          </section>
+        <section>
+          <RatingForm movieInfo={this.state.movie} userInfo={this.props.userInfo} />
+        </section>
       </main>
     )
   }
