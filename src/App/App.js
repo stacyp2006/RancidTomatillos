@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch, Link, NavLink } from 'react-router-dom';
+import { Route, Link, withRouter } from 'react-router-dom';
 import Homepage from '../Homepage/Homepage.js'
 import Login from '../Login/Login.js';
 import ShowPage from '../ShowPage/ShowPage';
@@ -9,8 +9,18 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      movies: []
+      movies: [],
+      loggedIn: false,
+      user: {}
     }
+  }
+
+  addUser = (userState) => {
+    this.setState({ loggedIn: true, user: userState });
+  }
+
+  logout = (e) => {
+    this.setState({ loggedIn: false, user: {} });
   }
 
   componentDidMount() {
@@ -24,10 +34,14 @@ class App extends Component {
     return (
       <main>
         <nav>
-          <Link to="/">Home</Link> 
-          <Link to="/login">Login</Link>
+          <Link to="/">Home</Link> {' '}
+          {!this.state.loggedIn && <Link to="/login">Login</Link>} {' '}
+          {this.state.loggedIn &&
+            <Link onClick={this.logout} to="/">
+             Logout
+            </Link>}
         </nav>
-        <Route path="/login" render={() => <Login />} />
+        <Route path="/login" render={() => <Login addUser={this.addUser} />} />
         <Route exact path="/" render={() => <Homepage home={this.state}/>} />
         <Route path='/movies/:id'
           render={({ match }) =>{
@@ -41,5 +55,4 @@ class App extends Component {
   }
 }
 
-// movieID={props.id}
-export default App;
+export default withRouter(App);
