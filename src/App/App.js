@@ -16,7 +16,11 @@ class App extends Component {
   }
 
   addUser = (userState) => {
-    this.setState({loggedIn: true, user: userState});
+    this.setState({ loggedIn: true, user: userState });
+  }
+
+  logout = (e) => {
+    this.setState({ loggedIn: true, user: {} });
   }
 
   componentDidMount() {
