@@ -11,3 +11,8 @@ export const loginFetch = () => {
   })
   .then(response => response.json())
 };
+
+export const singleMovieFetch = () => {
+  return fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${this.props.id}`)
+    .then(response => response.json())
+};
