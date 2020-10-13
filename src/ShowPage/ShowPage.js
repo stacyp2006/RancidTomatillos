@@ -1,38 +1,23 @@
 import React, { Component } from 'react';
-import Card from '../Card/Card';
 import RatingForm from '../RatingForm/RatingForm';
-import { Route, Switch, Link, NavLink } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import './ShowPage.css';
+import { singleMovieFetch } from '../apiCalls.js';
 
 class ShowPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
       movie: {},
-      videos: [],
       userRating: ''
     }
-    console.log(props);
-  }
-
-  fetchMovieObj() {
-    return fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${this.props.id}`)
-      .then(response => response.json())
-      .then(data => this.setState({movie: data.movie}))
-      .catch(error => console.log('movie fetch error'))
-  }
-
-  fetchVideos() {
-    return fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${this.props.id}/videos`)
-      .then(response => response.json())
-      .then(data => this.setState({videos: data.videos}))
-      .catch(error => console.log('video fetch error'))
   }
 
   componentDidMount() {
-    this.fetchMovieObj();
-    this.fetchVideos();
+    singleMovieFetch(this.props.id)
+      .then(data => this.setState({movie: data.movie}))
+      .catch(error => console.log({error: error.message}))
   }
 
   // getGenres() {
@@ -55,7 +40,6 @@ class ShowPage extends Component {
           <h2>{film.tagline}</h2>
           <h2>{film.overview}</h2>
         </section>
-
         <section className='info-section'>
           <h2>{film.release_date}</h2>
           <h2>{film.budget}</h2>
@@ -76,4 +60,4 @@ class ShowPage extends Component {
 }
 
 export default ShowPage;
-// <Videos allVideos={this.state.videos} />
+//refactor film genres organization

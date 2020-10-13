@@ -4,6 +4,7 @@ import Homepage from '../Homepage/Homepage.js'
 import Login from '../Login/Login.js';
 import ShowPage from '../ShowPage/ShowPage';
 import './App.css';
+import { moviesFetch } from '../apiCalls.js';
 
 class App extends Component {
   constructor() {
@@ -24,8 +25,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch('https://rancid-tomatillos.herokuapp.com/api/v2/movies')
-      .then(response => response.json())
+    moviesFetch()
       .then(data => this.setState({movies: data.movies}))
       .catch(error => console.log('app error'))
   }
