@@ -15,10 +15,12 @@ class ShowPage extends Component {
 
   getUserRating = (ratingList) => {
     const userID = this.props.userInfo.id;
-    getAllRatings(userID)
-    .then(data => ratingList = data.ratings)
-    .then(data => this.setState({userRating: this.findMovieRating(ratingList)}))
-    .catch(error => this.setState({error: error.message}))
+    if (this.props.userInfo.id) {
+      getAllRatings(userID)
+      .then(data => ratingList = data.ratings)
+      .then(data => this.setState({userRating: this.findMovieRating(ratingList)}))
+      .catch(error => this.setState({error: error.message}))
+    }
   }
 
   findMovieRating = (ratingList) => {
