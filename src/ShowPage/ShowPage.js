@@ -52,19 +52,19 @@ class ShowPage extends Component {
     singleMovieFetch(this.props.id)
       .then(data => this.setState({movie: data.movie}))
       .then(data => this.getUserRating())
+      .then(data => this.displayGenres())
       .catch(error => console.log({error: error.message}))
   }
 
-  // getGenres() {
-  //   console.log(this.state.movie.genres);
-  //   let genreElement
-  //   if(!this.state.movie) {
-  //     genreElement = this.state.movie.genres.map(genre => {
-  //       return genre;
-  //     })
-  //   }
-  //   return genreElement
-  // }
+  displayGenres() {
+    let allGenres
+    if(this.state.movie) {
+      allGenres = this.state.movie.genres.map(genre => {
+        return <li>{genre}</li>
+      })
+    }
+    this.setState({genreElements: allGenres});
+  }
 
   render() {
     const film = this.state.movie;
@@ -82,7 +82,7 @@ class ShowPage extends Component {
           <h2>{film.runtime}</h2>
           <h2>{film.average_rating}</h2>
           <ul>
-            <li>{film.genres}</li>
+            {this.state.genreElements}
           </ul>
         </section>
         <section> {this.state.userRating && <h2>User Rating: {this.state.userRating.rating}</h2>}</section>
