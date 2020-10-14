@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Link, withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import './Login.css';
 import { loginFetch } from '../apiCalls.js';
 
@@ -34,7 +34,6 @@ class Login extends Component {
     }
   }
 //refactor error handling for 'User not found'
-//move fetch to apiCalls?
   resetInputs = () => {
     this.setState({email: '', password: ''})
   }

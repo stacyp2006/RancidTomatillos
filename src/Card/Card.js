@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Login from '../Login/Login.js';
-import ShowPage from '../ShowPage/ShowPage';
-import { Route, Switch, Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './Card.css';
 
 const Card = (props) => {
@@ -27,4 +25,3 @@ Card.propTypes = {
   posterPath: PropTypes.string.isRequired,
   averageRating: PropTypes.number.isRequired
 }
-// '/movies/' + props.id

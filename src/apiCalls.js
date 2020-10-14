@@ -16,3 +16,23 @@ export const singleMovieFetch = (filmID) => {
   return fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${filmID}`)
     .then(response => response.json())
 };
+
+export const userRatingPost = (userID, rating) => {
+  return fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/users/${userID}/ratings`, {
+    method: 'POST',
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify(rating)
+  })
+  .then(response => response.json())
+};
+
+export const getAllRatings = (userID) => {
+  return fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/users/${userID}/ratings`)
+    .then(response => response.json())
+};
+
+export const deleteUserRating = (userID, movieID) => {
+  return fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/users/${userID}/ratings/${movieID}`, {
+    method: 'DELETE'})
+    .then(response => response.json)
+}

@@ -47,7 +47,7 @@ class App extends Component {
           render={({ match }) =>{
             const { id } = match.params;
             const movieToRender = this.state.movies.find(movie => movie.id === parseInt(id));
-            return <ShowPage {...movieToRender} />
+            return <ShowPage userInfo={this.state.user} {...movieToRender} />
           }}
         />
       </main>
