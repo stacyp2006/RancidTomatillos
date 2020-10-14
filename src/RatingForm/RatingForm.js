@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Route, Link } from 'react-router-dom';
 import './RatingForm.css';
 import { userRatingPost } from '../apiCalls.js';
 
@@ -27,14 +26,11 @@ class RatingForm extends Component {
     .then(data => console.log(data))
     .catch(error => this.setState({error: error.message}))
   }
+//alert for user: You've already rated this movie!
 
-  componentDidMount() {
-
-  }
   render() {
     return(
       <div>
-        <h2>User Rating: </h2>
         <form>
           <label>Rate This Movie</label>
           <input
@@ -48,7 +44,6 @@ class RatingForm extends Component {
           onClick={this.addUserRating}
           />
         </form>
-        <button>Delete Rating</button>
       </div>
     )
   }
