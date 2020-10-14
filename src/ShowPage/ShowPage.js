@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import RatingForm from '../RatingForm/RatingForm';
 import PropTypes from 'prop-types';
 import './ShowPage.css';
-import { singleMovieFetch, getAllRatings } from '../apiCalls.js';
+import { singleMovieFetch, getAllRatings, deleteUserRating } from '../apiCalls.js';
 
 class ShowPage extends Component {
   constructor(props) {
@@ -27,6 +27,20 @@ class ShowPage extends Component {
     });
     return rating;
   }
+
+  deleteRating = (event) => {
+    event.preventDefault();
+    let userID = this.props.userInfo.id;
+    let ratingID = this.state.userRating.id;
+    this.deleteFromApi(userID, ratingID);
+  }
+
+  deleteFromApi = (userID, ratingID) => {
+    deleteUserRating(userID, ratingID)
+    .then(data => this.setState({userRating: {}}))
+    .catch(error => this.setState({error: error.message}))
+  }
+
 
   componentDidMount() {
     singleMovieFetch(this.props.id)
@@ -70,7 +84,10 @@ class ShowPage extends Component {
         </section>
         <section>
         {this.props.userInfo.id &&
-          <RatingForm movieInfo={this.state.movie} userInfo={this.props.userInfo} />
+          <RatingForm
+          movieInfo={this.state.movie}
+          userInfo={this.props.userInfo}
+          />
         }
         </section>
       </main>
