@@ -8,7 +8,7 @@ const Homepage = (props) => {
     <section>
       <h1>Movies and such</h1>
       <h2>Welcome, Filmbuff</h2>
-      <Movies moviesList={props.home.movies}/>
+      <Movies moviesList={props.home.movies} userInfo={props.home.user}/>
     </section>
   )
 }

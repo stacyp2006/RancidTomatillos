@@ -8,8 +8,7 @@ class ShowPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      movie: {},
-      userRating: {}
+      movie: {}
     }
   }
 
@@ -19,6 +18,11 @@ class ShowPage extends Component {
       getAllRatings(userID)
       .then(data => ratingList = data.ratings)
       .then(data => this.setState({userRating: this.findMovieRating(ratingList)}))
+      .catch(error => this.setState({error: error.message}))
+    } else {
+      getAllRatings(userID)
+      .then(data => ratingList = data.ratings)
+      .then(data => this.setState({userRating: {}}))
       .catch(error => this.setState({error: error.message}))
     }
   }
@@ -81,12 +85,13 @@ class ShowPage extends Component {
             <li>{film.genres}</li>
           </ul>
         </section>
-        <section> {this.props.userInfo.id && <h2>User Rating: {this.state.userRating.rating}</h2>}</section>
+        <section> {this.state.userRating && <h2>User Rating: {this.state.userRating.rating}</h2>}</section>
         <section> {this.props.userInfo.id && <button onClick={this.deleteRating}>Delete Rating</button>}
         </section>
         <section>
-        {this.props.userInfo.id &&
+        {this.props.userInfo.id && !this.state.userRating &&
           <RatingForm
+          getUserRating = {this.getUserRating}
           movieInfo={this.state.movie}
           userInfo={this.props.userInfo}
           />

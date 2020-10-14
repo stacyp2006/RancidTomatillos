@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './RatingForm.css';
-import { userRatingPost } from '../apiCalls.js';
+import { userRatingPost, getAllRatings } from '../apiCalls.js';
 
 class RatingForm extends Component {
   constructor(props) {
@@ -23,7 +23,7 @@ class RatingForm extends Component {
       rating: parseInt(this.state.userRating)
     };
     userRatingPost(userID, rating)
-    .then(data => console.log(data))
+    .then(data => this.props.getUserRating)
     .catch(error => this.setState({error: error.message}))
   }
 //alert for user: You've already rated this movie!
