@@ -11,6 +11,12 @@ class RatingForm extends Component {
     }
   }
 
+  updateShowPageState = () => {
+    const { addRating } = this.props;
+    let formState = this.state.postedRating;
+    addRating(formState);
+  }
+
   updateValue = (event) => {
     this.setState({userRating: event.target.value});
   }
@@ -23,10 +29,10 @@ class RatingForm extends Component {
       rating: parseInt(this.state.userRating)
     };
     userRatingPost(userID, rating)
-    .then(data => this.props.getUserRating)
+    .then(data => this.setState({postedRating: data.rating}))
+    .then(data => this.updateShowPageState())
     .catch(error => this.setState({error: error.message}))
   }
-//alert for user: You've already rated this movie!
 
   render() {
     return(

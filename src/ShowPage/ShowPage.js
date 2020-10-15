@@ -12,8 +12,9 @@ class ShowPage extends Component {
     }
   }
 
-//iterate through App.userRatings to find the rating for the current movie??
-
+addRating = (formState) => {
+  this.setState({ userMovieRating: formState })
+}
 
 // this will be run passing in props instead of running it on the promise.
   findUserRating = () => {
@@ -23,7 +24,7 @@ class ShowPage extends Component {
     if(!ratingObj) {
       this.setState({userMovieRating: 'Rate this movie!'});
     } else {
-      this.setState({userMovieRating: ratingObj.rating});
+      this.setState({userMovieRating: ratingObj});
     }
     // if(!props.userInfo.id) {
     //   return "log in please";
@@ -37,22 +38,23 @@ class ShowPage extends Component {
 
   // iterate through props.userInfo.userRatings
 
-  deleteRating = (event) => {
+  // deleteRating = (event) => {
+  //
+  //   this.deleteFromApi(userID, ratingID);
+  // }
+
+  deleteFromApi = (event) => {
     event.preventDefault();
     let userID = this.props.userInfo.id;
-    let ratingID = this.state.userRating.id;
-    this.deleteFromApi(userID, ratingID);
-  }
-
-  deleteFromApi = (userID, ratingID) => {
+    let ratingID = this.state.userMovieRating.id;
     deleteUserRating(userID, ratingID)
-    .then(data => this.setState({userRating: {}}))
+    .then(data => this.setState({userMovieRating: 'Rate this movie!'}))
     .catch(error => this.setState({error: error.message}))
   }
 
 
   componentDidMount() {
-    singleMovieFetch(this.props.id)// HARD CODED ID
+    singleMovieFetch(this.props.id)
       .then(data => this.setState({movie: data.movie}))
       .then(data => this.findUserRating())
       .then(data => this.displayGenres())
@@ -71,6 +73,7 @@ class ShowPage extends Component {
 
   render() {
     const film = this.state.movie;
+    const ratingObj = this.state.userMovieRating;
     return (
       <main>
         <section className='title-section'>
@@ -88,14 +91,14 @@ class ShowPage extends Component {
             {this.state.genreElements}
           </ul>
         </section>
-        <section> {this.props.userInfo.id && <h2>User Rating: 
-          {this.state.userMovieRating}</h2>}
+        <section> {this.props.userInfo.id && this.state.userMovieRating && <h2>User Rating: {ratingObj.rating}</h2>}
         </section>
-        <section> {this.props.userInfo.id && <button onClick={this.deleteRating}>Delete Rating</button>}
+        <section> {this.props.userInfo.id && <button onClick={this.deleteFromApi}>Delete Rating</button>}
         </section>
         <section>
-        {this.props.userInfo.id && !this.state.userRating &&
+        {this.props.userInfo.id && this.state.userMovieRating === 'Rate this movie!' &&
           <RatingForm
+          addRating={this.addRating}
           movieInfo={this.state.movie}
           userInfo={this.props.userInfo}
           />

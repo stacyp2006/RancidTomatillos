@@ -31,8 +31,8 @@ export const getAllRatings = (userID) => {
     .then(response => response.json())
 };
 
-export const deleteUserRating = (userID, movieID) => {
-  return fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/users/${userID}/ratings/${movieID}`, {
+export const deleteUserRating = (userID, ratingID) => {
+  return fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/users/${userID}/ratings/${ratingID}`, {
     method: 'DELETE'})
     .then(response => response.json)
 }
