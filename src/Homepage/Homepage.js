@@ -8,7 +8,8 @@ const Homepage = (props) => {
     <section>
       <h1>Movies and such</h1>
       {props.home.user.id ? <h2>Welcome, {props.home.user.name}!</h2> : <h2>Welcome, Movie Buff!</h2>}
-      <Movies moviesList={props.home.movies} userInfo={props.home.user}/>
+      <Movies moviesList={props.home.movies}
+      loggedIn={props.home.loggedIn} userInfo={props.home.user}/>
     </section>
   )
 }
