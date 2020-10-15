@@ -8,9 +8,7 @@ class ShowPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      movie: {}
-      //allRatings: []
-      //userRating: {...}
+      movie: {},
     }
   }
 
@@ -18,12 +16,26 @@ class ShowPage extends Component {
 
 
 // this will be run passing in props instead of running it on the promise.
-  findMovieRating = (ratings) => {
-    const rating = ratings.find(rating => {
-      return this.state.movie.id === rating.movie_id
-    });
-    return rating;
+  findUserRating = () => {
+    let ratingObj = this.props.userInfo.userRatings.find(rating => {
+      return rating.movie_id === this.state.movie.id;
+    })
+    if(!ratingObj) {
+      this.setState({userMovieRating: 'Rate this movie!'});
+    } else {
+      this.setState({userMovieRating: ratingObj.rating});
+    }
+    // if(!props.userInfo.id) {
+    //   return "log in please";
+    // } else if(!ratingObj.rating) {
+    //   return 'Rate this movie';
+    //
+    //   })
+    //   return ratingObj.rating;
+    // }
   }
+
+  // iterate through props.userInfo.userRatings
 
   deleteRating = (event) => {
     event.preventDefault();
@@ -40,9 +52,9 @@ class ShowPage extends Component {
 
 
   componentDidMount() {
-    singleMovieFetch(718444)// HARD CODED ID
+    singleMovieFetch(this.props.id)// HARD CODED ID
       .then(data => this.setState({movie: data.movie}))
-      // .then(data => this.getUserRating())
+      .then(data => this.findUserRating())
       .then(data => this.displayGenres())
       .catch(error => console.log({error: error.message}))
   }
@@ -76,7 +88,9 @@ class ShowPage extends Component {
             {this.state.genreElements}
           </ul>
         </section>
-        <section> {this.state.userRating && <h2>User Rating: {this.state.userRating.rating}</h2>}</section>
+        <section> {this.props.userInfo.id && <h2>User Rating: 
+          {this.state.userMovieRating}</h2>}
+        </section>
         <section> {this.props.userInfo.id && <button onClick={this.deleteRating}>Delete Rating</button>}
         </section>
         <section>

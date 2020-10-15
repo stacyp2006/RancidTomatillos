@@ -6,12 +6,11 @@ const Movies = (props) => {
   if (props.moviesList.length !== 0) {
     movieCards = props.moviesList.map(movie => {
       let movieRating = 'Rate this movie';
-      let movieObj
+      let movieObj;
       if(props.loggedIn) {
         movieObj = props.userInfo.userRatings.find(rating => {
           return movie.id === rating.movie_id;
         });
-        console.log(movieObj);
       }
       return (
         <Card
