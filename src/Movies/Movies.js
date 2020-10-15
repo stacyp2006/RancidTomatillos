@@ -5,19 +5,34 @@ const Movies = (props) => {
   let movieCards;
   if (props.moviesList.length !== 0) {
     movieCards = props.moviesList.map(movie => {
+      let movieRating = 'Rate this movie';
+      let movieObj
+      if(props.loggedIn) {
+        movieObj = props.userInfo.userRatings.find(rating => {
+          return movie.id === rating.movie_id;
+        });
+        console.log(movieObj);
+      }
       return (
         <Card
           id={movie.id}
+          loggedIn={props.loggedIn}
           key={movie.id}
           posterPath={movie.poster_path}
           backdropPath={movie.backdrop_path}
           title={movie.title}
           averageRating={movie.average_rating}
           releaseDate={movie.release_date}
+          userRating={movieObj ? movieObj.rating : movieRating}
         />
       )
     })
   }
+    //
+  //find conditionals: if user is logged in and if
+// userRating array = props.userInfo.userRating.movie_id
+// use a find
+//iterate through user.userRatings as well to match the movie_id with the movie's id. declare as a variable, pass into Card.
 
   return (
     <div className='card-container'>
