@@ -9,26 +9,24 @@ class ShowPage extends Component {
     super(props);
     this.state = {
       movie: {}
+      //allRatings: []
+      //userRating: {...}
     }
   }
 
-  getUserRating = (ratingList) => {
-    const userID = this.props.userInfo.id;
-    if (this.props.userInfo.id) {
-      getAllRatings(userID)
-      .then(data => ratingList = data.ratings)
-      .then(data => this.setState({userRating: this.findMovieRating(ratingList)}))
-      .catch(error => this.setState({error: error.message}))
-    } else {
-      getAllRatings(userID)
-      .then(data => ratingList = data.ratings)
-      .then(data => this.setState({userRating: {}}))
-      .catch(error => this.setState({error: error.message}))
-    }
-  }
+  // createUserRatings = () => {
+  //   const { addRatings } = this.props;
+  //   let ratingState = this.state.allRatings;
+  //   addRatings(ratingState);
+  // }
 
-  findMovieRating = (ratingList) => {
-    const rating = ratingList.find(rating => {
+//iterate through App.userRatings to find the rating for the current movie??
+
+
+// this will be run passing in props instead of running it on the promise.
+  findMovieRating = (ratings) => {
+    this.createUserRatings();
+    const rating = ratings.find(rating => {
       return this.state.movie.id === rating.movie_id
     });
     return rating;

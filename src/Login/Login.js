@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import './Login.css';
-import { loginFetch } from '../apiCalls.js';
+import { loginFetch, getAllRatings } from '../apiCalls.js';
 
 
 class Login extends Component {
@@ -11,7 +11,8 @@ class Login extends Component {
       email: '',
       password: '',
       id: '',
-      name: ''
+      name: '',
+      userRatings: []
     }
   }
 
@@ -25,9 +26,8 @@ class Login extends Component {
         id: data.user.id,
         name: data.user.name
       }))
-      .then(data => this.createUser())
-      .then(data => this.goToHome())
-      .catch(error => console.log('login error'))
+      .then(data => this.getUserRatings())
+      .catch(error => this.setState({error: error.message}))
     } else {
       this.resetInputs();
       alert('Invalid login information. Please try again.');
@@ -36,6 +36,15 @@ class Login extends Component {
 //refactor error handling for 'User not found'
   resetInputs = () => {
     this.setState({email: '', password: ''})
+  }
+
+  getUserRatings = () => {
+    const userID = this.state.id;
+    getAllRatings(userID)
+    .then(data => this.setState({userRatings: data.ratings}))
+    .then(data => this.createUser())
+    .then(data => this.goToHome())
+    .catch(error => this.setState({error: error.message}))
   }
 
   createUser = () => {
@@ -49,8 +58,9 @@ class Login extends Component {
   }
 
   updateValue = (event) => {
-    this.setState({[event.target.name]: event.target.value})
+    this.setState({[event.target.name]: event.target.value});
   }
+
 
   render() {
     return (
