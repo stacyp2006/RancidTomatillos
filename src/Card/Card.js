@@ -13,6 +13,7 @@ const Card = (props) => {
       </nav>
       <article>
         <h2>{props.averageRating}</h2>
+        {props.loggedIn && <h2>{props.userRating}</h2>}
       </article>
     </div>
   )
