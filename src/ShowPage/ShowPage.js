@@ -14,18 +14,11 @@ class ShowPage extends Component {
     }
   }
 
-  // createUserRatings = () => {
-  //   const { addRatings } = this.props;
-  //   let ratingState = this.state.allRatings;
-  //   addRatings(ratingState);
-  // }
-
 //iterate through App.userRatings to find the rating for the current movie??
 
 
 // this will be run passing in props instead of running it on the promise.
   findMovieRating = (ratings) => {
-    this.createUserRatings();
     const rating = ratings.find(rating => {
       return this.state.movie.id === rating.movie_id
     });
@@ -47,14 +40,14 @@ class ShowPage extends Component {
 
 
   componentDidMount() {
-    singleMovieFetch(this.props.id)
+    singleMovieFetch(718444)// HARD CODED ID
       .then(data => this.setState({movie: data.movie}))
-      .then(data => this.getUserRating())
+      // .then(data => this.getUserRating())
       .then(data => this.displayGenres())
       .catch(error => console.log({error: error.message}))
   }
 
-  displayGenres() {
+  displayGenres = () => {
     let allGenres
     if(this.state.movie) {
       allGenres = this.state.movie.genres.map(genre => {
@@ -89,7 +82,6 @@ class ShowPage extends Component {
         <section>
         {this.props.userInfo.id && !this.state.userRating &&
           <RatingForm
-          getUserRating = {this.getUserRating}
           movieInfo={this.state.movie}
           userInfo={this.props.userInfo}
           />
