@@ -20,7 +20,8 @@ addRating = (formState) => {
 // method that calls the get all ratings function
 updateAppState = () => {
   const { updateUser } = this.props;
-
+  let ratingState = this.state.userMovieRating;
+  updateUser(ratingState);
 }
 
 // this will be run passing in props instead of running it on the promise.
@@ -101,6 +102,7 @@ updateAppState = () => {
         <section>
         {this.props.userInfo.id && this.state.userMovieRating === 'Rate this movie!' &&
           <RatingForm
+          updateAppState={this.updateAppState}
           addRating={this.addRating}
           movieInfo={this.state.movie}
           userInfo={this.props.userInfo}

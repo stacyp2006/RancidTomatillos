@@ -31,6 +31,7 @@ class RatingForm extends Component {
     userRatingPost(userID, rating)
     .then(data => this.setState({postedRating: data.rating}))
     .then(data => this.updateShowPageState())
+    .then(data => this.props.updateAppState())
     .catch(error => this.setState({error: error.message}))
   }
 

@@ -49,7 +49,7 @@ class Login extends Component {
 
   createUser = () => {
     const { addUser } = this.props;
-    let userState = this.state.;
+    let userState = this.state;
     addUser(userState);
   }
 

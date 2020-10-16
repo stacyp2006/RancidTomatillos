@@ -15,19 +15,10 @@ class App extends Component {
     }
   }
 
-  updateUser = () => {
-    this.setState({userRatings: [] userRatings.push(ratingState)})
+  updateUser = (ratingState) => {
+    this.setState({userRatings: [...ratingState]});
   }
 
-//   this.state = {
-//    user: {
-//       userRatings: []
-//    }
-// }
-
-// let currentUser = {...this.state.user}
-// currentUser.userRatings = [];
-// this.setState({someProperty})
 
   addUser = (userState, ratingState) => {
     this.setState({
