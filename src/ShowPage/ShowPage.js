@@ -16,6 +16,13 @@ addRating = (formState) => {
   this.setState({ userMovieRating: formState })
 }
 
+//recreate lifting state from login
+// method that calls the get all ratings function
+updateAppState = () => {
+  const { updateUser } = this.props;
+
+}
+
 // this will be run passing in props instead of running it on the promise.
   findUserRating = () => {
     let ratingObj = this.props.userInfo.userRatings.find(rating => {
@@ -38,10 +45,6 @@ addRating = (formState) => {
 
   // iterate through props.userInfo.userRatings
 
-  // deleteRating = (event) => {
-  //
-  //   this.deleteFromApi(userID, ratingID);
-  // }
 
   deleteFromApi = (event) => {
     event.preventDefault();
