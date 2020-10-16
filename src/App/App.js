@@ -11,17 +11,35 @@ class App extends Component {
     super();
     this.state = {
       movies: [],
-      loggedIn: false,
-      user: {}
+      loggedIn: false
     }
   }
 
-  addUser = (userState) => {
-    this.setState({ loggedIn: true, user: userState });
+  updateUser = (ratingState) => {
+    this.setState({userRatings: [...ratingState]});
+  }
+
+
+  addUser = (userState, ratingState) => {
+    this.setState({
+      loggedIn: true,
+      email: userState.email,
+      password: userState.password,
+      id: userState.id,
+      name: userState.name,
+      userRatings: userState.userRatings
+    });
   }
 
   logout = (e) => {
-    this.setState({ loggedIn: false, user: {} });
+    this.setState({
+      loggedIn: false,
+      email: '',
+      password: '',
+      id: '',
+      name: '',
+      userRatings: []
+    });
   }
 
   componentDidMount() {
@@ -47,7 +65,7 @@ class App extends Component {
           render={({ match }) =>{
             const { id } = match.params;
             const movieToRender = this.state.movies.find(movie => movie.id === parseInt(id));
-            return <ShowPage userInfo={this.state.user} {...movieToRender} />
+            return <ShowPage updateUser={this.updateUser} userInfo={this.state} {...movieToRender} />
           }}
         />
       </main>

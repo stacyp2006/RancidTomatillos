@@ -9,37 +9,50 @@ class ShowPage extends Component {
     super(props);
     this.state = {
       movie: {},
-      userRating: {}
     }
   }
 
-  getUserRating = (ratingList) => {
-    const userID = this.props.userInfo.id;
-    if (this.props.userInfo.id) {
-      getAllRatings(userID)
-      .then(data => ratingList = data.ratings)
-      .then(data => this.setState({userRating: this.findMovieRating(ratingList)}))
-      .catch(error => this.setState({error: error.message}))
+addRating = (formState) => {
+  this.setState({ userMovieRating: formState })
+}
+
+//recreate lifting state from login
+// method that calls the get all ratings function
+updateAppState = () => {
+  const { updateUser } = this.props;
+  let ratingState = this.state.userMovieRating;
+  updateUser(ratingState);
+}
+
+// this will be run passing in props instead of running it on the promise.
+  findUserRating = () => {
+    let ratingObj = this.props.userInfo.userRatings.find(rating => {
+      return rating.movie_id === this.state.movie.id;
+    })
+    if(!ratingObj) {
+      this.setState({userMovieRating: 'Rate this movie!'});
+    } else {
+      this.setState({userMovieRating: ratingObj});
     }
+    // if(!props.userInfo.id) {
+    //   return "log in please";
+    // } else if(!ratingObj.rating) {
+    //   return 'Rate this movie';
+    //
+    //   })
+    //   return ratingObj.rating;
+    // }
   }
 
-  findMovieRating = (ratingList) => {
-    const rating = ratingList.find(rating => {
-      return this.state.movie.id === rating.movie_id
-    });
-    return rating;
-  }
+  // iterate through props.userInfo.userRatings
 
-  deleteRating = (event) => {
+
+  deleteFromApi = (event) => {
     event.preventDefault();
     let userID = this.props.userInfo.id;
-    let ratingID = this.state.userRating.id;
-    this.deleteFromApi(userID, ratingID);
-  }
-
-  deleteFromApi = (userID, ratingID) => {
+    let ratingID = this.state.userMovieRating.id;
     deleteUserRating(userID, ratingID)
-    .then(data => this.setState({userRating: {}}))
+    .then(data => this.setState({userMovieRating: 'Rate this movie!'}))
     .catch(error => this.setState({error: error.message}))
   }
 
@@ -47,23 +60,24 @@ class ShowPage extends Component {
   componentDidMount() {
     singleMovieFetch(this.props.id)
       .then(data => this.setState({movie: data.movie}))
-      .then(data => this.getUserRating())
+      .then(data => this.findUserRating())
+      .then(data => this.displayGenres())
       .catch(error => console.log({error: error.message}))
   }
 
-  // getGenres() {
-  //   console.log(this.state.movie.genres);
-  //   let genreElement
-  //   if(!this.state.movie) {
-  //     genreElement = this.state.movie.genres.map(genre => {
-  //       return genre;
-  //     })
-  //   }
-  //   return genreElement
-  // }
+  displayGenres = () => {
+    let allGenres
+    if(this.state.movie) {
+      allGenres = this.state.movie.genres.map(genre => {
+        return <li>{genre}</li>
+      })
+    }
+    this.setState({genreElements: allGenres});
+  }
 
   render() {
     const film = this.state.movie;
+    const ratingObj = this.state.userMovieRating;
     return (
       <main>
         <section className='title-section'>
@@ -78,15 +92,18 @@ class ShowPage extends Component {
           <h2>{film.runtime}</h2>
           <h2>{film.average_rating}</h2>
           <ul>
-            <li>{film.genres}</li>
+            {this.state.genreElements}
           </ul>
         </section>
-        <section> {this.props.userInfo.id && <h2>User Rating: {this.state.userRating.rating}</h2>}</section>
-        <section> {this.props.userInfo.id && <button onClick={this.deleteRating}>Delete Rating</button>}
+        <section> {this.props.userInfo.id && this.state.userMovieRating && <h2>User Rating: {ratingObj.rating}</h2>}
+        </section>
+        <section> {this.props.userInfo.id && <button onClick={this.deleteFromApi}>Delete Rating</button>}
         </section>
         <section>
-        {this.props.userInfo.id &&
+        {this.props.userInfo.id && this.state.userMovieRating === 'Rate this movie!' &&
           <RatingForm
+          updateAppState={this.updateAppState}
+          addRating={this.addRating}
           movieInfo={this.state.movie}
           userInfo={this.props.userInfo}
           />
