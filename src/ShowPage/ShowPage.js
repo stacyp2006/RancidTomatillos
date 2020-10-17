@@ -79,43 +79,44 @@ addRating = (formState) => {
     const film = this.state.movie;
     const ratingObj = this.state.userMovieRating;
     return (
-      <main>
-        <section className='title-section'>
-          <h1>{film.title}</h1>
-          <h2>{film.tagline}</h2>
-          <h2>{film.overview}</h2>
-        </section>
-        <section className='info-section'>
-          <h2>Release Date: {film.release_date}</h2>
-          <h2>Budget: {`$${film.budget}`}</h2>
-          <h2>Revenue: {`$${film.revenue}`}</h2>
-          <h2>Runtime: {`${film.runtime} minutes`}</h2>
-          <h2>Average Rating: {film.average_rating}</h2>
-          <h2>Genres:</h2>
-          <ul>
-            {this.state.genreElements}
-          </ul>
-        </section>
-        <section>
-          {this.props.userInfo.id &&
-          this.state.userMovieRating &&
-          <h2>User Rating: {ratingObj.rating}</h2>}
-        </section>
-        <section>
-          {this.props.userInfo.id &&
-          <button onClick={this.deleteFromApi}>Delete Rating</button>}
-        </section>
-        <section>
-          {this.props.userInfo.id &&
-          this.state.userMovieRating === 'Rate this movie!' &&
-          <RatingForm
-          updateAppState={this.updateAppState}
-          addRating={this.addRating}
-          movieInfo={this.state.movie}
-          userInfo={this.props.userInfo}
-          />
-          }
-        </section>
+      <main className="show-page" style={{ backgroundImage: `url(${film.backdrop_path})` }}>
+        <div className="movie-info">
+          <section className='title-section'>
+            <h1>{film.title}</h1>
+            <h2>{film.tagline}</h2>
+            <h2>{film.overview}</h2>
+          </section>
+          <section className='info-section'>
+            <h2>Release Date: {film.release_date}</h2>
+            <h2>Budget: {`$${film.budget}`}</h2>
+            <h2>Revenue: {`$${film.revenue}`}</h2>
+            <h2>Runtime: {`${film.runtime} minutes`}</h2>
+            <h2>Genres:</h2>
+            <ul className="genre-list">
+              {this.state.genreElements}
+            </ul>
+            <h2>Average Rating: {parseInt(film.average_rating).toFixed(0)}</h2>
+            <section>
+              {this.props.userInfo.id &&
+              this.state.userMovieRating &&
+              <h2>User Rating: {ratingObj.rating}</h2>}
+            </section>
+          </section>
+          <section>
+            {this.props.userInfo.id &&
+            <button className="delete-button" onClick={this.deleteFromApi}>Delete Rating</button>}
+          </section>
+          <section>
+            {this.props.userInfo.id &&
+            this.state.userMovieRating === 'Rate this movie!' &&
+            <RatingForm
+            updateAppState={this.updateAppState}
+            addRating={this.addRating}
+            movieInfo={this.state.movie}
+            userInfo={this.props.userInfo}
+            />}
+          </section>
+        </div>
       </main>
     )
   }
