@@ -12,8 +12,8 @@ const Card = (props) => {
       </Link>
       </nav>
       <article>
-        <h2>{props.averageRating}</h2>
-        {props.loggedIn && <h2>{props.userRating}</h2>}
+        <h2 className="card-rating">Average Rating: {props.averageRating.toFixed(0)}</h2>
+        {props.loggedIn && <h2 className="card-rating">User Rating:   {props.userRating}</h2>}
       </article>
     </div>
   )
