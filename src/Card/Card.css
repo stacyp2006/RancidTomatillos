@@ -1,14 +1,11 @@
 .poster {
-  max-height: 300px;
+  height: auto;
   width: 100%;
   border: none;
   border-bottom: 3px solid black;
   border-top: 3px solid black;
   border-radius: 20px 20px 0px 0px;
 }
-
-/* add styling to maintain aspect ratio */
-
 
 .poster-card {
   box-sizing: border-box;
