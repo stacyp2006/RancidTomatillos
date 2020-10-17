@@ -18,11 +18,11 @@ addRating = (formState) => {
 
 //recreate lifting state from login
 // method that calls the get all ratings function
-updateAppState = () => {
-  const { updateUser } = this.props;
-  let ratingState = this.state.userMovieRating;
-  updateUser(ratingState);
-}
+// updateAppState = () => {
+//   const { updateUser } = this.props;
+//   let ratingState = this.state.userMovieRating;
+//   updateUser(ratingState);
+// }
 
 // this will be run passing in props instead of running it on the promise.
   findUserRating = () => {

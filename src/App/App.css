@@ -1,0 +1,16 @@
+main {
+  background-color: #46494c;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  height: 80px;
+}
+
+.homelink, .loginlink, .logoutlink {
+  text-decoration: none;
+  color: #ffffff;
+  padding: 5px;
+  font-size: 30px;
+}
