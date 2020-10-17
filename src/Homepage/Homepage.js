@@ -14,3 +14,7 @@ const Homepage = (props) => {
   )
 }
 export default Homepage;
+
+Homepage.propTypes = {
+  movies: PropTypes.array
+}

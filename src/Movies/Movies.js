@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Card from '../Card/Card';
 
 const Movies = (props) => {
@@ -41,3 +42,14 @@ const Movies = (props) => {
 }
 
 export default Movies;
+
+Movies.propTypes = {
+  moviesList: PropTypes.array.isRequired,
+  id: PropTypes.number,
+  key: PropTypes.number,
+  posterPath: PropTypes.string,
+  backdropPath: PropTypes.string,
+  title: PropTypes.string,
+  averageRating: PropTypes.number,
+  releaseDate: PropTypes.string
+}

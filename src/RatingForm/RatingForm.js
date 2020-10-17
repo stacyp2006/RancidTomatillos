@@ -57,3 +57,7 @@ class RatingForm extends Component {
 }
 
 export default RatingForm;
+
+RatingForm.propTypes = {
+  movie: PropTypes.object.isRequired,
+}
