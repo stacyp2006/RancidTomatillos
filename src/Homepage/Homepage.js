@@ -5,7 +5,7 @@ import './Homepage.css';
 
 const Homepage = (props) => {
   return (
-    <section>
+    <section className='header'>
       <h1>Movies and such</h1>
       {props.home.id ? <h2>Welcome, {props.home.name}!</h2> : <h2>Welcome, Movie Buff!</h2>}
       <Movies moviesList={props.home.movies}
