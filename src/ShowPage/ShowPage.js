@@ -60,8 +60,8 @@ addRating = (formState) => {
   componentDidMount() {
     singleMovieFetch(this.props.id)
       .then(data => this.setState({movie: data.movie}))
-      .then(data => this.findUserRating())
       .then(data => this.displayGenres())
+      .then(data => this.findUserRating())
       .catch(error => console.log({error: error.message}))
   }
 
@@ -86,28 +86,35 @@ addRating = (formState) => {
           <h2>{film.overview}</h2>
         </section>
         <section className='info-section'>
-          <h2>{film.release_date}</h2>
-          <h2>{film.budget}</h2>
-          <h2>{film.revenue}</h2>
-          <h2>{film.runtime}</h2>
-          <h2>{film.average_rating}</h2>
+          <h2>Release Date: {film.release_date}</h2>
+          <h2>Budget: {`$${film.budget}`}</h2>
+          <h2>Revenue: {`$${film.revenue}`}</h2>
+          <h2>Runtime: {`${film.runtime} minutes`}</h2>
+          <h2>Average Rating: {film.average_rating}</h2>
+          <h2>Genres:</h2>
           <ul>
             {this.state.genreElements}
           </ul>
         </section>
-        <section> {this.props.userInfo.id && this.state.userMovieRating && <h2>User Rating: {ratingObj.rating}</h2>}
-        </section>
-        <section> {this.props.userInfo.id && <button onClick={this.deleteFromApi}>Delete Rating</button>}
+        <section>
+          {this.props.userInfo.id &&
+          this.state.userMovieRating &&
+          <h2>User Rating: {ratingObj.rating}</h2>}
         </section>
         <section>
-        {this.props.userInfo.id && this.state.userMovieRating === 'Rate this movie!' &&
+          {this.props.userInfo.id &&
+          <button onClick={this.deleteFromApi}>Delete Rating</button>}
+        </section>
+        <section>
+          {this.props.userInfo.id &&
+          this.state.userMovieRating === 'Rate this movie!' &&
           <RatingForm
           updateAppState={this.updateAppState}
           addRating={this.addRating}
           movieInfo={this.state.movie}
           userInfo={this.props.userInfo}
           />
-        }
+          }
         </section>
       </main>
     )
