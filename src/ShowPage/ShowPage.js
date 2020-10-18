@@ -86,15 +86,29 @@ addRating = (formState) => {
             <h2>{film.tagline}</h2>
             <h2>{film.overview}</h2>
           </section>
-          <section className='info-section'>
-            <h2>Release Date: {film.release_date}</h2>
-            <h2>Budget: {`$${film.budget}`}</h2>
-            <h2>Revenue: {`$${film.revenue}`}</h2>
-            <h2>Runtime: {`${film.runtime} minutes`}</h2>
-            <h2>Genres:</h2>
-            <ul className="genre-list">
-              {this.state.genreElements}
-            </ul>
+          <div className="column-section">
+            <section className='info-section'>
+              <h2>Release Date: {film.release_date}</h2>
+              <h2>Budget: {`$${film.budget}`}</h2>
+              <h2>Revenue: {`$${film.revenue}`}</h2>
+              <h2>Runtime: {`${film.runtime} minutes`}</h2>
+              <h2>Genres:</h2>
+              <ul className="genre-list">
+                {this.state.genreElements}
+              </ul>
+            </section>
+            <section className="rating-form-section">
+              {this.props.userInfo.id &&
+              this.state.userMovieRating === 'Rate this movie!' &&
+              <RatingForm
+              updateAppState={this.updateAppState}
+              addRating={this.addRating}
+              movieInfo={this.state.movie}
+              userInfo={this.props.userInfo}
+              />}
+            </section>
+          </div>
+          <section className="rating-section">
             <h2>Average Rating: {parseInt(film.average_rating).toFixed(0)}</h2>
             <section>
               {this.props.userInfo.id &&
@@ -105,16 +119,6 @@ addRating = (formState) => {
           <section>
             {this.props.userInfo.id &&
             <button className="delete-button" onClick={this.deleteFromApi}>Delete Rating</button>}
-          </section>
-          <section>
-            {this.props.userInfo.id &&
-            this.state.userMovieRating === 'Rate this movie!' &&
-            <RatingForm
-            updateAppState={this.updateAppState}
-            addRating={this.addRating}
-            movieInfo={this.state.movie}
-            userInfo={this.props.userInfo}
-            />}
           </section>
         </div>
       </main>
