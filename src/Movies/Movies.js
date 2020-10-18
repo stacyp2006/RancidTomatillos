@@ -36,7 +36,7 @@ const Movies = (props) => {
 //iterate through user.userRatings as well to match the movie_id with the movie's id. declare as a variable, pass into Card.
 
   return (
-    <div className='card-container'>
+    <div role='card-container' className='card-container'>
       {movieCards}
     </div>
   )
