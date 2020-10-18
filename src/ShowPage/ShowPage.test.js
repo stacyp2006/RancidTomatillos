@@ -35,6 +35,7 @@ describe('ShowPage', () => {
   it('should render a showpage', () => {
     render(<ShowPage userInfo={fakeUser} {...movieToRender}/>);
     expect(screen.getByRole('show-page')).toBeInTheDocument();
+    expect(screen.getByText('Delete Rating')).toBeInTheDocument();
   })
 })
 // we need to learn asynchronous testing first so we can mock the singleMovieFetch to get movie details to render
