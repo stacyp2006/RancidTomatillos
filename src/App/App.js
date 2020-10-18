@@ -15,11 +15,6 @@ class App extends Component {
     }
   }
 
-  // updateUser = (ratingState) => {
-  //   this.setState({userRatings: [...ratingState]});
-  // }
-
-
   addUser = (userState, ratingState) => {
     this.setState({
       loggedIn: true,
