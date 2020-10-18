@@ -4,7 +4,8 @@ import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
 import ShowPage from './ShowPage';
 
-describe.only('ShowPage', () => {
+
+describe('ShowPage', () => {
   const movieToRender = {
     id: 694919,
     poster_path: "https://image.tmdb.org/t/p/original//6CoRTJTmijhBLJTUNoVSUNxZMEI.jpg",
@@ -13,9 +14,27 @@ describe.only('ShowPage', () => {
     average_rating: 9,
     release_date: "2020-09-29"
   }
+  const fakeUser = {
+    loggedIn: true,
+    email: "rick@turing.io",
+    password: 'asdf123',
+    id: 83,
+    name: 'Rick',
+    userRatings: [
+      {
+        id: 3072,
+        user_id: 83,
+        movie_id: 694919,
+        rating: 4,
+        created_at: "2020-10-18T02:11:00.653Z",
+        updated_at: "2020-10-18T02:11:00.653Z"
+      }
+    ]
+  };
+
   it('should render a showpage', () => {
-    render(<ShowPage {...movieToRender}/>);
-    expect(screen.getByText('Money Plane')).toBeInTheDocument();
+    render(<ShowPage userInfo={fakeUser} {...movieToRender}/>);
+    expect(screen.getByRole('show-page')).toBeInTheDocument();
   })
 })
-// we need to learn asynchronous testing first
+// we need to learn asynchronous testing first so we can mock the singleMovieFetch to get movie details to render

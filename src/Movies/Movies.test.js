@@ -34,6 +34,3 @@ describe('Movies', () => {
     expect(screen.getByRole('card-container')).toBeInTheDocument();
   })
 })
-
-
-//should render the movie card container
