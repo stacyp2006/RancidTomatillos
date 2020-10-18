@@ -41,5 +41,6 @@ describe('Homepage', () => {
     render(<Homepage home={fakeState}/>);
     expect(screen.getByText("Welcome, Rick!")).toBeInTheDocument();
   });
-
 })
+
+//test that Movies renders to the page?

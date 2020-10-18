@@ -29,11 +29,6 @@ const Movies = (props) => {
       )
     })
   }
-    //
-  //find conditionals: if user is logged in and if
-// userRating array = props.userInfo.userRating.movie_id
-// use a find
-//iterate through user.userRatings as well to match the movie_id with the movie's id. declare as a variable, pass into Card.
 
   return (
     <div role='card-container' className='card-container'>
