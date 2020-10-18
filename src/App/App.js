@@ -15,9 +15,9 @@ class App extends Component {
     }
   }
 
-  updateUser = (ratingState) => {
-    this.setState({userRatings: [...ratingState]});
-  }
+  // updateUser = (ratingState) => {
+  //   this.setState({userRatings: [...ratingState]});
+  // }
 
 
   addUser = (userState, ratingState) => {
@@ -51,11 +51,11 @@ class App extends Component {
   render() {
     return (
       <main>
-        <nav>
-          <Link to="/">Home</Link> {' '}
-          {!this.state.loggedIn && <Link to="/login">Login</Link>} {' '}
+        <nav className="links">
+          <Link to="/" className="homelink">Home</Link> {' '}
+          {!this.state.loggedIn && <Link to="/login" className="loginlink">Login</Link>} {' '}
           {this.state.loggedIn &&
-            <Link onClick={this.logout} to="/">
+            <Link className="logoutlink" onClick={this.logout} to="/">
              Logout
             </Link>}
         </nav>

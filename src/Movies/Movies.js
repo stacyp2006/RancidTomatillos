@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Card from '../Card/Card';
+import './Movies.css';
 
 const Movies = (props) => {
   let movieCards;

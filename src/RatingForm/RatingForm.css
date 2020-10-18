@@ -1,0 +1,15 @@
+.rating-form {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  font-size: 30px;
+  padding-top: 10px;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+}
+
+.rating-num, .rating-submit-btn {
+  font-size: 20px;
+  margin: 10px;
+}

@@ -1,0 +1,19 @@
+.header {
+  font-size: 30px;
+  background-color: #1985a1;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.popcorn {
+  font-size: 100px;
+}
+
+.header-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
