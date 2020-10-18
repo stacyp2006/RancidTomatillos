@@ -64,7 +64,7 @@ class Login extends Component {
   render() {
     return (
       <div className="login">
-        <form className="login-form">
+        <form role="login-form" className="login-form">
           <h1 className="login-title">Login Here</h1>
           <input
           className="email-input"

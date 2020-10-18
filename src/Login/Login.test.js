@@ -14,8 +14,22 @@ describe('Login', () => {
     expect(screen.getByPlaceholderText('Enter your password')).toBeInTheDocument();
     expect(screen.getByText('login')).toBeInTheDocument();
   })
+
+  it('should display an alert if the user enters incorrect login info', () => {
+    global.alert = jest.fn();
+    const fakeAddUser = jest.fn();
+    render (<BrowserRouter><Login addUser={fakeAddUser}/></BrowserRouter>);
+    userEvent.click(screen.getByText('login'));
+    expect(screen.getByRole('login-form')).not.toHaveFormValues({
+      email: 'rick@turing.io',
+      password: 'asdf123'
+    });
+    expect(global.alert).toHaveBeenCalledTimes(1);
+  })
 })
 
+//it should send you back to the homepage if you login correctly
+//it should fire an alert if you do not enter the correct login information
 
 // it('should render with a logout link if a user is logged in', () => {
 //   render(
