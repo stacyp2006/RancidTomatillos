@@ -37,23 +37,21 @@ class RatingForm extends Component {
 
   render() {
     return(
-      <div>
-        <form className="rating-form">
-          <label className="rating-label">Rate This Movie</label>
-          <input
-          className='rating-num'
-          type='number'
-          min='1' max='10'
-          name='rating'
-          onChange={this.updateValue}
-          />
-          <input
-          className='rating-submit-btn'
-          type='submit'
-          onClick={this.addUserRating}
-          />
-        </form>
-      </div>
+      <form className="rating-form">
+        <label className="rating-label">Rate This Movie</label>
+        <input
+        className='rating-num'
+        type='number'
+        min='1' max='10'
+        name='rating'
+        onChange={this.updateValue}
+        />
+        <input
+        className='rating-submit-btn'
+        type='submit'
+        onClick={this.addUserRating}
+        />
+      </form>
     )
   }
 }
