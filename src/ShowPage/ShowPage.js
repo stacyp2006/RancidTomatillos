@@ -91,7 +91,6 @@ class ShowPage extends Component {
               {this.props.userInfo.id &&
               this.state.userMovieRating === 'Rate this movie!' &&
               <RatingForm
-              updateAppState={this.updateAppState}
               addRating={this.addRating}
               movieInfo={this.state.movie}
               userInfo={this.props.userInfo}
