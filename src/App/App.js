@@ -15,11 +15,6 @@ class App extends Component {
     }
   }
 
-  // updateUser = (ratingState) => {
-  //   this.setState({userRatings: [...ratingState]});
-  // }
-
-
   addUser = (userState, ratingState) => {
     this.setState({
       loggedIn: true,
@@ -65,7 +60,7 @@ class App extends Component {
           render={({ match }) =>{
             const { id } = match.params;
             const movieToRender = this.state.movies.find(movie => movie.id === parseInt(id));
-            return <ShowPage updateUser={this.updateUser} userInfo={this.state} {...movieToRender} />
+            return <ShowPage userInfo={this.state} {...movieToRender} />
           }}
         />
       </main>

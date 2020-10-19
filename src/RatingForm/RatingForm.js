@@ -47,6 +47,7 @@ class RatingForm extends Component {
         onChange={this.updateValue}
         />
         <input
+        role='submit-btn'
         className='rating-submit-btn'
         type='submit'
         onClick={this.addUserRating}
@@ -59,5 +60,5 @@ class RatingForm extends Component {
 export default RatingForm;
 
 RatingForm.propTypes = {
-  movie: PropTypes.object.isRequired,
+  movieInfo: PropTypes.object.isRequired,
 }

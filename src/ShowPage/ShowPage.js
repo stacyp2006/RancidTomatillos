@@ -12,19 +12,10 @@ class ShowPage extends Component {
     }
   }
 
-addRating = (formState) => {
-  this.setState({ userMovieRating: formState })
-}
+  addRating = (formState) => {
+    this.setState({ userMovieRating: formState })
+  }
 
-//recreate lifting state from login
-// method that calls the get all ratings function
-// updateAppState = () => {
-//   const { updateUser } = this.props;
-//   let ratingState = this.state.userMovieRating;
-//   updateUser(ratingState);
-// }
-
-// this will be run passing in props instead of running it on the promise.
   findUserRating = () => {
     let ratingObj = this.props.userInfo.userRatings.find(rating => {
       return rating.movie_id === this.state.movie.id;
@@ -56,7 +47,6 @@ addRating = (formState) => {
     .catch(error => this.setState({error: error.message}))
   }
 
-
   componentDidMount() {
     singleMovieFetch(this.props.id)
       .then(data => this.setState({movie: data.movie}))
@@ -79,7 +69,7 @@ addRating = (formState) => {
     const film = this.state.movie;
     const ratingObj = this.state.userMovieRating;
     return (
-      <main className="show-page" style={{ backgroundImage: `url(${film.backdrop_path})` }}>
+      <main role="show-page" className="show-page" style={{ backgroundImage: `url(${film.backdrop_path})` }}>
         <div className="movie-info">
           <section className='title-section'>
             <h1>{film.title}</h1>
@@ -101,7 +91,6 @@ addRating = (formState) => {
               {this.props.userInfo.id &&
               this.state.userMovieRating === 'Rate this movie!' &&
               <RatingForm
-              updateAppState={this.updateAppState}
               addRating={this.addRating}
               movieInfo={this.state.movie}
               userInfo={this.props.userInfo}
@@ -127,4 +116,3 @@ addRating = (formState) => {
 }
 
 export default ShowPage;
-//refactor film genres organization
