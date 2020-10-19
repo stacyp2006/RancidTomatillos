@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
 import Login from './Login';
@@ -26,10 +26,21 @@ describe('Login', () => {
     });
     expect(global.alert).toHaveBeenCalledTimes(1);
   })
+
+  it('should update email input value on change', () => {
+    render (<BrowserRouter><Login /></BrowserRouter>);
+    fireEvent.change(screen.queryByPlaceholderText('Enter your email'), {target: {value: 'rick@turing.io'}});
+    expect(screen.queryByPlaceholderText('Enter your email').value).toBe('rick@turing.io');
+  })
+
+  it('should update password input value on change', () => {
+    render (<BrowserRouter><Login /></BrowserRouter>);
+    fireEvent.change(screen.queryByPlaceholderText('Enter your password'), {target: {value: 'asdf123'}});
+    expect(screen.queryByPlaceholderText('Enter your password').value).toBe('asdf123');
+  })
 })
 
 //it should send you back to the homepage if you login correctly
-//it should fire an alert if you do not enter the correct login information
 
 // it('should render with a logout link if a user is logged in', () => {
 //   render(
