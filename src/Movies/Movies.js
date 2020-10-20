@@ -31,7 +31,7 @@ const Movies = (props) => {
   }
 
   return (
-    <div role='card-container' className='card-container'>
+    <div role='region' className='card-container'>
       {movieCards}
     </div>
   )

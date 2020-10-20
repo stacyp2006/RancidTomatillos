@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './RatingForm.css';
-import { userRatingPost, getAllRatings } from '../apiCalls.js';
+import { userRatingPost } from '../apiCalls.js';
 
 class RatingForm extends Component {
   constructor(props) {
@@ -28,11 +28,15 @@ class RatingForm extends Component {
       movie_id: this.props.movieInfo.id,
       rating: parseInt(this.state.userRating)
     };
-    userRatingPost(userID, rating)
-    .then(data => this.setState({postedRating: data.rating}))
-    .then(data => this.updateShowPageState())
-    .then(data => this.props.updateAppState)
-    .catch(error => this.setState({error: error.message}))
+    if (!rating.rating) {
+      alert('Please use the dropdown menu to choose a rating.');
+    } else {
+      userRatingPost(userID, rating)
+      .then(data => this.setState({postedRating: data.rating}))
+      .then(data => this.updateShowPageState())
+      .then(data => this.props.updateAppState)
+      .catch(error => this.setState({error: error.message}))
+    }
   }
 
   render() {
@@ -41,17 +45,17 @@ class RatingForm extends Component {
         <label className="rating-label">Rate This Movie</label>
         <input
         className='rating-num'
+        placeholder='Choose a rating'
         type='number'
         min='1' max='10'
         name='rating'
         onChange={this.updateValue}
         />
-        <input
-        role='submit-btn'
+        <button
         className='rating-submit-btn'
-        type='submit'
-        onClick={this.addUserRating}
-        />
+        onClick={this.addUserRating}>
+        Submit
+        </button>
       </form>
     )
   }
