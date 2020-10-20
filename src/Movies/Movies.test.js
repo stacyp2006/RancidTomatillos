@@ -105,5 +105,5 @@ describe('Movies', () => {
 
     expect(screen.getByText('User Rating: 10')).toBeInTheDocument();
   });
-//sad pass 
+//sad pass
 })

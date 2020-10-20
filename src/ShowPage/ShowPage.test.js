@@ -34,7 +34,7 @@ describe('ShowPage', () => {
 
   it('should render a showpage', () => {
     render(<ShowPage userInfo={fakeUser} {...movieToRender}/>);
-    expect(screen.getByRole('show-page')).toBeInTheDocument();
+    expect(screen.getByRole('main')).toBeInTheDocument();
     expect(screen.getByText('Delete Rating')).toBeInTheDocument();
   })
 })

@@ -7,12 +7,12 @@ const Homepage = (props) => {
   return (
     <section>
       <div className="header">
-        <h1 className="popcorn">🍿</h1>
+        <span role="img" aria-label="popcorn-emoji" className="popcorn">🍿</span>
           <div className="header-text">
             <h1>Movies and such</h1>
             {props.home.loggedIn ? <h2>Welcome, {props.home.name}!</h2> : <h2>Welcome, Movie Buff!</h2>}
           </div>
-        <h1 className="popcorn">🍿</h1>
+        <span role="img" aria-label="popcorn-emoji" className="popcorn">🍿</span>
       </div>
       <Movies moviesList={props.home.movies}
       loggedIn={props.home.loggedIn} userInfo={props.home}/>

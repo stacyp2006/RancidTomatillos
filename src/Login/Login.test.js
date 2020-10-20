@@ -22,7 +22,7 @@ describe('Login', () => {
     const fakeAddUser = jest.fn();
     render (<BrowserRouter><Login addUser={fakeAddUser}/></BrowserRouter>);
     userEvent.click(screen.getByText('login'));
-    expect(screen.getByRole('login-form')).not.toHaveFormValues({
+    expect(screen.getByTestId('login-fieldset')).not.toHaveFormValues({
       email: 'rick@turing.io',
       password: 'asdf123'
     });

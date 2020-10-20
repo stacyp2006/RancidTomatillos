@@ -12,4 +12,5 @@
 .rating-num, .rating-submit-btn {
   font-size: 20px;
   margin: 10px;
+  width: 160px;
 }
