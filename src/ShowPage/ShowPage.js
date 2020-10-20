@@ -119,5 +119,5 @@ export default ShowPage;
 
 ShowPage.propTypes = {
   userInfo: PropTypes.object.isRequired,
-  movieToRender: PropTypes.object.isRequired  
+  movieToRender: PropTypes.object 
 }

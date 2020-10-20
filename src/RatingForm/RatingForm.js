@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './RatingForm.css';
-import { userRatingPost, getAllRatings } from '../apiCalls.js';
+import { userRatingPost } from '../apiCalls.js';
 
 class RatingForm extends Component {
   constructor(props) {
@@ -46,12 +46,11 @@ class RatingForm extends Component {
         name='rating'
         onChange={this.updateValue}
         />
-        <input
-        role='submit-btn'
+        <button
         className='rating-submit-btn'
-        type='submit'
-        onClick={this.addUserRating}
-        />
+        onClick={this.addUserRating}>
+        Submit
+        </button>
       </form>
     )
   }

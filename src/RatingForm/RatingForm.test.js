@@ -39,6 +39,6 @@ describe('RatingForm', () => {
       userInfo={fakeUser}
     />);
     expect(screen.getByText('Rate This Movie')).toBeInTheDocument();
-    expect(screen.getByRole('submit-btn')).toBeInTheDocument();
+    expect(screen.getByText('Submit')).toBeInTheDocument();
   })
 })
