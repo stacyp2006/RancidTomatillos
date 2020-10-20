@@ -1,8 +1,10 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
 import ShowPage from './ShowPage';
+import { singleMovieFetch } from '../apiCalls.js'
+jest.mock('../apiCalls.js');
 
 
 describe('ShowPage', () => {
@@ -33,9 +35,43 @@ describe('ShowPage', () => {
   };
 
   it('should render a showpage', () => {
+    singleMovieFetch.mockResolvedValue({})
     render(<ShowPage userInfo={fakeUser} {...movieToRender}/>);
     expect(screen.getByRole('main')).toBeInTheDocument();
     expect(screen.getByText('Delete Rating')).toBeInTheDocument();
+  });
+
+  it('should display the information of a fetched movie on render', async() => {
+    singleMovieFetch.mockResolvedValue(
+      {
+        movie: {
+        id: 694919,
+        title: "Money Plane",
+        poster_path: "poster.jpg",
+        backdrop_path: "backdrop.jpg",
+        release_date: "2020-09-29",
+        overview: "It's a movie.",
+        genres: ["Action"],
+        budget: 4,
+        revenue: 500,
+        runtime: 82,
+        tagline: "It sucks.",
+        average_rating: 5
+        }
+      }
+    );
+
+    render(<ShowPage userInfo={fakeUser} {...movieToRender}/>);
+
+    expect(await waitFor( () => screen.getByText('Money Plane'))).toBeInTheDocument();
+    expect(await waitFor( () => screen.getByText("Release Date: 2020-09-29"))).toBeInTheDocument();
+    expect(await waitFor( () => screen.getByText("It's a movie."))).toBeInTheDocument();
+    expect(await waitFor( () => screen.getByText("Action"))).toBeInTheDocument();
+    expect(await waitFor( () => screen.getByText("Budget: $4"))).toBeInTheDocument();
+    expect(await waitFor( () => screen.getByText("Revenue: $500"))).toBeInTheDocument();
+    expect(await waitFor( () => screen.getByText("Runtime: 82 minutes"))).toBeInTheDocument();
+    expect(await waitFor( () => screen.getByText("It sucks."))).toBeInTheDocument();
+    expect(await waitFor( () => screen.getByText("Average Rating: 5"))).toBeInTheDocument();
   })
 })
 
