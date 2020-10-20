@@ -41,4 +41,5 @@ describe('Homepage', () => {
     render(<Homepage home={fakeState}/>);
     expect(screen.getByText("Welcome, Rick!")).toBeInTheDocument();
   });
+  //Test for displaying logout link here instead of login?
 })
