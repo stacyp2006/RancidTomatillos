@@ -36,14 +36,14 @@ describe('App', () => {
     average_rating: '5',
     release_date: "2020-09-29"
     },
-    {
-    id: 337401,
-    poster_path: "https://image.tmdb.org/t/p/original//aKx1ARwG55zZ0GpRvU2WrGrCG9o.jpg",
-    backdrop_path: "https://image.tmdb.org/t/p/original//zzWGRw277MNoCs3zhyG3YmYQsXv.jpg",
-    title: "Mulan",
-    average_rating: '6',
-    release_date: "2020-09-04"
-    }
+    // {
+    // id: 337401,
+    // poster_path: "https://image.tmdb.org/t/p/original//aKx1ARwG55zZ0GpRvU2WrGrCG9o.jpg",
+    // backdrop_path: "https://image.tmdb.org/t/p/original//zzWGRw277MNoCs3zhyG3YmYQsXv.jpg",
+    // title: "Mulan",
+    // average_rating: '6',
+    // release_date: "2020-09-04"
+    // }
   ]);
   const fakeHome = { movies: fakeMovies };
   const fakeUserInfo = {
@@ -62,7 +62,7 @@ describe('App', () => {
   // render(
   //   <BrowserRouter><Homepage /></BrowserRouter>?
   // );
-  const avgRating1 = await waitFor( () => screen.getByText('Average Rating:'));
+  const avgRating1 = await waitFor(() => screen.getByAltText('movie poster'));
   expect(avgRating1).toBeInTheDocument();
   })
 
