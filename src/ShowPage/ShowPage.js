@@ -59,7 +59,7 @@ class ShowPage extends Component {
     let allGenres
     if(this.state.movie) {
       allGenres = this.state.movie.genres.map(genre => {
-        return <li>{genre}</li>
+        return <li key={genre}>{genre}</li>
       })
     }
     this.setState({genreElements: allGenres});
@@ -119,5 +119,5 @@ export default ShowPage;
 
 ShowPage.propTypes = {
   userInfo: PropTypes.object.isRequired,
-  movieToRender: PropTypes.object 
+  movieToRender: PropTypes.object
 }
