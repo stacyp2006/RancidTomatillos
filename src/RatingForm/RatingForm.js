@@ -45,6 +45,7 @@ class RatingForm extends Component {
         <label className="rating-label">Rate This Movie</label>
         <input
         className='rating-num'
+        placeholder='Choose a rating'
         type='number'
         min='1' max='10'
         name='rating'
