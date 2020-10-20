@@ -66,27 +66,25 @@ class Login extends Component {
       <div className="login">
         <form role="form" className="login-form">
           <h1 className="login-title">Login Here</h1>
-          <input
-          className="email-input"
-          type='text'
-          placeholder='Enter your email'
-          name='email'
-          value={this.state.email}
-          onChange={this.updateValue}
-          />
-          <input
-          className="password-input"
-          type='password'
-          placeholder='Enter your password'
-          name='password'
-          value={this.state.password}
-          onChange={this.updateValue}
-          />
-          <Link to="/">
-            <button className="login-button" onClick={this.submitLogin}>
-              login
-            </button>
-          </Link>
+          <fieldset data-testid="login-fieldset">
+            <input
+            className="email-input"
+            type='text'
+            placeholder='Enter your email'
+            name='email'
+            value={this.state.email}
+            onChange={this.updateValue}
+            />
+            <input
+            className="password-input"
+            type='password'
+            placeholder='Enter your password'
+            name='password'
+            value={this.state.password}
+            onChange={this.updateValue}
+            />
+          </fieldset>
+          <Link to="/" className="login-button" onClick={this.submitLogin}>login</Link>
         </form>
       </div>
     )
