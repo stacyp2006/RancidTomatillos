@@ -38,4 +38,11 @@ describe('ShowPage', () => {
     expect(screen.getByText('Delete Rating')).toBeInTheDocument();
   })
 })
-// we need to learn asynchronous testing first so we can mock the singleMovieFetch to get movie details to render
+
+// fetches the information of a movie: all the movie info is in the document.
+
+//if a user is logged in it would show their rating or rate this message.
+
+//delete button deletes a ratings
+
+//

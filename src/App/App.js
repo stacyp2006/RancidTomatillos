@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Link, withRouter } from 'react-router-dom';
-import Homepage from '../Homepage/Homepage.js'
+import Homepage from '../Homepage/Homepage.js';
 import Login from '../Login/Login.js';
 import ShowPage from '../ShowPage/ShowPage';
 import './App.css';
@@ -42,6 +42,8 @@ class App extends Component {
       .then(data => this.setState({movies: data.movies}))
       .catch(error => console.log('app error'))
   }
+
+  //error handling to help with test?
 
   render() {
     return (

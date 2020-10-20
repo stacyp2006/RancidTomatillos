@@ -33,4 +33,6 @@ describe('Movies', () => {
     render(<BrowserRouter><Movies moviesList={fakeMovieList} loggedIn={false} userInfo={fakeUser}/></BrowserRouter>);
     expect(screen.getByRole('card-container')).toBeInTheDocument();
   })
+
+  // it should render a collection of movie cards
 })

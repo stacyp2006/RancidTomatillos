@@ -14,13 +14,10 @@ describe('Card', () => {
             posterPath='movie poster'
             backdropPath='backdrop'
             title='title'
-            averageRating={8}
+            averageRating= {8}
             releaseDate='2019-10-10'
           /></BrowserRouter>);
     expect(screen.getByAltText("movie poster")).toBeInTheDocument();
-    expect(screen.getByText("8")).toBeInTheDocument();
+    expect(screen.getByText('Average Rating: 8')).toBeInTheDocument();
     })
 })
-
-//will need a test when button functionality is complete
-//will need a test to verify user rating

@@ -1,12 +1,13 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+// import ReactDOM from 'react-dom';
 import { render, screen, waitFor } from '@testing-library/react';
-import '@testing-library/jest-dom';
-import userEvent from '@testing-library/user-event';
 import App from './App';
-import { BrowserRouter } from 'react-router-dom';
-// import { moviesFetch } from '../apiCalls.js'
-// jest.mock('../apiCalls.js');
+import { BrowserRouter, MemoryRouter } from 'react-router-dom';
+import userEvent from '@testing-library/user-event';
+import { moviesFetch } from '../apiCalls.js'
+jest.mock('../apiCalls.js');
+// import '@testing-library/jest-dom';
+// import Homepage from '../Homepage/Homepage.js';
 
 describe('App', () => {
   it('should render with a home link and a login link', () => {
@@ -16,39 +17,52 @@ describe('App', () => {
     expect(screen.getByText('Home')).toBeInTheDocument();
     expect(screen.getByText('Login')).toBeInTheDocument();
   })
+
+//test that the fetch is getting movies:
+ // setup: mocking the Fetch
+  //copy pasta from the api to mock resolved values.
+//execution/assertion: expect avg rating to be in the document
+  it('should render displaying movies', async () => {
+
+  moviesFetch.mockResolvedValueOnce([
+    {
+    id: 694919,
+    poster_path: "https://image.tmdb.org/t/p/original//6CoRTJTmijhBLJTUNoVSUNxZMEI.jpg",
+    backdrop_path: "https://image.tmdb.org/t/p/original//pq0JSpwyT2URytdFG0euztQPAyR.jpg",
+    title: "Money Plane",
+    average_rating: '5',
+    release_date: "2020-09-29"
+    },
+    {
+    id: 337401,
+    poster_path: "https://image.tmdb.org/t/p/original//aKx1ARwG55zZ0GpRvU2WrGrCG9o.jpg",
+    backdrop_path: "https://image.tmdb.org/t/p/original//zzWGRw277MNoCs3zhyG3YmYQsXv.jpg",
+    title: "Mulan",
+    average_rating: '6',
+    release_date: "2020-09-04"
+    }
+  ]);
+
+  render(
+    <BrowserRouter><App/></BrowserRouter>
+  );
+  // render(
+  //   <BrowserRouter><Homepage /></BrowserRouter>?
+  // );
+  const avgRating1 = await waitFor(() => screen.getByText('5'));
+  expect(avgRating1).toBeInTheDocument();
+  })
+
 })
 
-
-
-// it('should fire logout method when logout link is clicked', () => {
-//   const fakeLogout = jest.fn();
-//   render(
-//     <BrowserRouter><App loggedIn={true} /></BrowserRouter>
-//   );
-//   userEvent.click(screen.getByText('Logout'));
-//   expect(fakeLogout).toHaveBeenCalledTimes(1);
-// })
-//figure out how to mock state
-
-// it('should fetch all movies when page is rendered', async () => {
-//   moviesFetch.mockResolvedValueOnce([{
-//       id: 694919,
-//       poster_path: "https://image.tmdb.org/t/p/original//6CoRTJTmijhBLJTUNoVSUNxZMEI.jpg",
-//       backdrop_path: "https://image.tmdb.org/t/p/original//pq0JSpwyT2URytdFG0euztQPAyR.jpg",
-//       title: "Money Plane",
-//       average_rating: 5.5,
-//       release_date: "2020-09-29"
-//   }]);
-//   render(
-//     <BrowserRouter><App /></BrowserRouter>
-//   );
-//   const container = screen.getByRole('card-container');
-//   const movie1 = await waitFor(() => screen.getByNumber(5.5));
-//   expect(container).toBeInTheDocument();
-//   expect(movie1).toBeInTheDocument();
-// })
-
+//when clicking a poster it renders showpage with ALL info for that movie.
 
 //when you click home it takes you home
+it('should return to home view when Home is clicked', () => {
+
+  render(
+    <BrowserRouter><App/></BrowserRouter>
+  );
+})
+
 //when login button is clicked, the login page is rendered
-//should fetch all movies

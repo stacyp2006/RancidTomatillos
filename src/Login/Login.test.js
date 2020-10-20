@@ -40,14 +40,6 @@ describe('Login', () => {
   })
 })
 
-//it should send you back to the homepage if you login correctly
-
-// it('should render with a logout link if a user is logged in', () => {
-//   render(
-//     <BrowserRouter>
-//     <App
-//       loggedIn={true}
-//     /></BrowserRouter>
-//   );
-//   expect(screen.getByText('Logout')).toBeInTheDocument();
-// })
+//test when user logs in that these things show in document:
+  //logout, user ratings or 'rate this'
+  // either shows avg. rating or rate this message 
