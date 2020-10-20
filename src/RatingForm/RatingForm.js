@@ -28,11 +28,15 @@ class RatingForm extends Component {
       movie_id: this.props.movieInfo.id,
       rating: parseInt(this.state.userRating)
     };
-    userRatingPost(userID, rating)
-    .then(data => this.setState({postedRating: data.rating}))
-    .then(data => this.updateShowPageState())
-    .then(data => this.props.updateAppState)
-    .catch(error => this.setState({error: error.message}))
+    if (!rating.rating) {
+      alert('Please use the dropdown menu to choose a rating.');
+    } else {
+      userRatingPost(userID, rating)
+      .then(data => this.setState({postedRating: data.rating}))
+      .then(data => this.updateShowPageState())
+      .then(data => this.props.updateAppState)
+      .catch(error => this.setState({error: error.message}))
+    }
   }
 
   render() {
