@@ -127,5 +127,6 @@ describe('Movies', () => {
     render(<BrowserRouter><Movies moviesList={fakeMovieList} loggedIn={true} userInfo={fakeUser}/></BrowserRouter>);
 
     expect(screen.getByText("User Rating: Rate this movie")).toBeInTheDocument();
-  })
+  });
+  
 })

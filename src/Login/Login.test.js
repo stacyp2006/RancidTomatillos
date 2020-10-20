@@ -1,10 +1,10 @@
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
 import Login from './Login';
 import { BrowserRouter } from 'react-router-dom';
-import { loginFetch } from '../apiCalls.js'
+import { loginFetch, getAllRatings } from '../apiCalls.js'
 jest.mock('../apiCalls.js');
 
 describe('Login', () => {
@@ -41,9 +41,27 @@ describe('Login', () => {
     expect(screen.queryByPlaceholderText('Enter your password').value).toBe('asdf123');
   });
 
-  it('should display a user\'s movie ratings if they have rated it', async() => {
+  it('should log a user in if their credentials are correct', async() => {
+    const fakeAddUser = jest.fn();
+    loginFetch.mockResolvedValueOnce(
+      {user: {id: 83, name: "Rick", email: 'rick@turing.io'}}
+    );
+    getAllRatings.mockResolvedValue(['hi'])
 
-  })
+    render (<BrowserRouter><Login addUser={fakeAddUser}/></BrowserRouter>);
+
+    const emailInput = screen.getByPlaceholderText('Enter your email');
+    const passwordInput = screen.getByPlaceholderText('Enter your password');
+
+    userEvent.type(emailInput, "rick@turing.io");
+    userEvent.type(passwordInput, "asdf123");
+    userEvent.click(screen.getByRole('link', { name: 'login' }));
+
+    const mockCall = await waitFor(() => fakeAddUser)
+    expect(mockCall).toHaveBeenCalled();
+  });
+
+
 })
 
 //test when user logs in that these things show in document:
