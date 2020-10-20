@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import RatingForm from '../RatingForm/RatingForm';
 import PropTypes from 'prop-types';
 import './ShowPage.css';
-import { singleMovieFetch, getAllRatings, deleteUserRating } from '../apiCalls.js';
+import { singleMovieFetch, deleteUserRating } from '../apiCalls.js';
 
 class ShowPage extends Component {
   constructor(props) {
@@ -69,7 +69,7 @@ class ShowPage extends Component {
     const film = this.state.movie;
     const ratingObj = this.state.userMovieRating;
     return (
-      <main role="show-page" className="show-page" style={{ backgroundImage: `url(${film.backdrop_path})` }}>
+      <main role="main" className="show-page" style={{ backgroundImage: `url(${film.backdrop_path})` }}>
         <div className="movie-info">
           <section className='title-section'>
             <h1>{film.title}</h1>
