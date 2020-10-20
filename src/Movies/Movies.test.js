@@ -32,7 +32,7 @@ describe('Movies', () => {
       userRatings: []
     };
     render(<BrowserRouter><Movies moviesList={fakeMovieList} loggedIn={false} userInfo={fakeUser}/></BrowserRouter>);
-    expect(screen.getByRole('card-container')).toBeInTheDocument();
+    expect(screen.getByRole('region')).toBeInTheDocument();
   });
 
   // it should render a collection of movie cards
@@ -105,5 +105,27 @@ describe('Movies', () => {
 
     expect(screen.getByText('User Rating: 10')).toBeInTheDocument();
   });
-//sad pass
+
+  it('should display a message asking a user to rate the movie if they are logged in and have not rated that particular movie', () => {
+    const fakeMovieList = [
+      {
+      id: 694919,
+      poster_path: "https://image.tmdb.org/t/p/original//6CoRTJTmijhBLJTUNoVSUNxZMEI.jpg",
+      backdrop_path: "https://image.tmdb.org/t/p/original//pq0JSpwyT2URytdFG0euztQPAyR.jpg",
+      title: "Money Plane",
+      average_rating: 5.5,
+      release_date: "2020-09-29"
+    }
+  ];
+    const fakeUser = {
+      email: "rick@turing.io",
+      password: 'asdf123',
+      id: 83,
+      name: 'Rick',
+      userRatings: []
+    };
+    render(<BrowserRouter><Movies moviesList={fakeMovieList} loggedIn={true} userInfo={fakeUser}/></BrowserRouter>);
+
+    expect(screen.getByText("User Rating: Rate this movie")).toBeInTheDocument();
+  })
 })
