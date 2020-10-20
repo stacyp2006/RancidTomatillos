@@ -31,6 +31,6 @@ describe('Movies', () => {
       name: 'Rick'
     };
     render(<BrowserRouter><Movies moviesList={fakeMovieList} loggedIn={false} userInfo={fakeUser}/></BrowserRouter>);
-    expect(screen.getByRole('card-container')).toBeInTheDocument();
+    expect(screen.getByRole('region')).toBeInTheDocument();
   })
 })
