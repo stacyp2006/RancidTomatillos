@@ -43,8 +43,6 @@ class App extends Component {
       .catch(error => console.log('app error'))
   }
 
-  //error handling to help with test?
-
   render() {
     return (
       <main>

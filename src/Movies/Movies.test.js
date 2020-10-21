@@ -35,7 +35,6 @@ describe('Movies', () => {
     expect(screen.getByRole('region')).toBeInTheDocument();
   });
 
-  // it should render a collection of movie cards
   it('should render a collection of movie cards based on the amount passed down in props', () => {
     const fakeMovieList = [
       {
@@ -128,5 +127,5 @@ describe('Movies', () => {
 
     expect(screen.getByText("User Rating: Rate this movie")).toBeInTheDocument();
   });
-  
+
 })
