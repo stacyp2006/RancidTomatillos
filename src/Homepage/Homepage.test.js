@@ -3,7 +3,8 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
 import Homepage from './Homepage.js';
-// import { BrowserRouter } from 'react-router-dom';
+import App from '../App/App.js';
+import { BrowserRouter } from 'react-router-dom';
 
 describe('Homepage', () => {
   it('should render the homepage view', () => {
@@ -40,7 +41,5 @@ describe('Homepage', () => {
     };
     render(<Homepage home={fakeState}/>);
     expect(screen.getByText("Welcome, Rick!")).toBeInTheDocument();
-  });
+  });  
 })
-
-//test that Movies renders to the page?

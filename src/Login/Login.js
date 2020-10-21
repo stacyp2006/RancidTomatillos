@@ -33,7 +33,7 @@ class Login extends Component {
       alert('Invalid login information. Please try again.');
     }
   }
-//refactor error handling for 'User not found'
+
   resetInputs = () => {
     this.setState({email: '', password: ''})
   }
@@ -64,7 +64,7 @@ class Login extends Component {
   render() {
     return (
       <div className="login">
-        <form role="form" className="login-form">
+        <form className="login-form">
           <h1 className="login-title">Login Here</h1>
           <fieldset data-testid="login-fieldset">
             <input
