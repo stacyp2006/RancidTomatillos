@@ -49,10 +49,10 @@
 ## In Action
 
 ### Home View
-![home view](./public/images/Home page.png)
+![home view](./public/images/Homepage.png)
 
 ### Movie View
-![movie view](./public/images/movie view.png)
+![movie view](./public/images/movieview.png)
 
 ### Login Action
 
