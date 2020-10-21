@@ -1,68 +1,63 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# RancidTomatillos
 
-## Available Scripts
+## What is this?
 
-In the project directory, you can run:
+- Rancid Tomatillos is a Mod3 paired project for the Front End Engineering program at the Turing School of Software and Design. The project theme takes its inspiration from the movie rating site, Rotten Tomatoes. In this project, students were expected to develop an app using React complete with React Router, robust testing, and styling via CSS.
 
-### `npm start`
+## Who was involved?
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- [Tim Keresey](https://github.com/timkeresey)
+- [Stacy Potten](https://github.com/stacyp2006)
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Installation
 
-### `npm test`
+- Clone down the repo
+- Run `npm install`
+- Run `npm start`
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Technologies used
 
-### `npm run build`
+- [React](https://reactjs.org/)
+  - JSX
+- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)
+- [Jest](https://jestjs.io/)
+- [CSS](https://en.wikipedia.org/wiki/CSS)
+- [Lighthouse](https://developers.google.com/web/tools/lighthouse)
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Accomplishments
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+- While we feel that there could be improvement to our overall application architecture, we do feel like we implemented React and React Router well for our first project with those technologies. We did a great deal of self teaching/learning in regard to implementing new tech. The UI and UX is relatively smooth. We paired together well as a team and bounced ideas off of one another in a respectful and productive way.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Challenges
 
-### `npm run eject`
+- Testing was the biggest challenge on this project. It was initially difficult to wrap our heads around where and how tests should be best implemented. We need more time to solidify our learning and understanding of these concepts. Additionally, we eventually gained a better understanding of how to cleanly and efficiently pass state down. We look forward to using what we've learned from this project on future challenges.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Future Iterations
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Comments
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- In a future iteration, we would like to implement commenting functionality. For example, a user should be able to navigate to a single movie show page and view all comments available for the movie. If the user is logged in, they should also be able to utilize a form to add their own comment.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Favorites and Filtering
 
-## Learn More
+- Additionally, we would like users to be able to favorite movies and filter the view so they see only their favorite movies. The ability to do this would be based on their login status.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Error Handling
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- While we do have some instances of error handling, we would like to add more frequent and robust error handling to the application. Specifically, for instances when response is a non-200 status code and in API call functionality.
 
-### Code Splitting
+## In Action
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+### Home View
+![home view](/Users/stacypotten/turing/3module/rancidtomatillos/public/images/Home page.png)
 
-### Analyzing the Bundle Size
+### Movie View
+![movie view](/Users/stacypotten/turing/3module/rancidtomatillos/public/images/movie view.png)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+### Login Action
 
-### Making a Progressive Web App
+![login action](https://media.giphy.com/media/E3s9ZUzEJnG0YgClbx/giphy.gif)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+### Rating Action
 
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+![rating action](https://media.giphy.com/media/jTv9FyauMgDPZqf0gF/giphy.gif)
