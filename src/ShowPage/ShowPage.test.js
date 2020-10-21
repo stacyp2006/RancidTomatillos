@@ -156,14 +156,11 @@ describe('ShowPage', () => {
       }
     );
 
-
     render(<ShowPage userInfo={fakeUser1} {...movieToRender}/>);
-
-
 
     userEvent.click(screen.getByText("Delete Rating"));
 
     const mockDelete = await waitFor(() => fakeDelete);
     expect(mockDelete).toHaveBeenCalled();
-  })
+  });
 })

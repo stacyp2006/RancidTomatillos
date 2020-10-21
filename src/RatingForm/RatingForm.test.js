@@ -5,7 +5,6 @@ import userEvent from '@testing-library/user-event';
 import RatingForm from './RatingForm';
 import { userRatingPost } from '../apiCalls.js'
 jest.mock('../apiCalls.js');
-// import { BrowserRouter } from 'react-router-dom';
 
 describe('RatingForm', () => {
   it('should render a rating form', () => {
@@ -123,5 +122,5 @@ describe('RatingForm', () => {
     userEvent.click(screen.getByText('Submit'));
 
     expect(await waitFor( () => screen.getByText("User Rating: 5"))).toBeInTheDocument();
-  })
+  });
 })

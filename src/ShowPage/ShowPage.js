@@ -25,18 +25,7 @@ class ShowPage extends Component {
     } else {
       this.setState({userMovieRating: ratingObj});
     }
-    // if(!props.userInfo.id) {
-    //   return "log in please";
-    // } else if(!ratingObj.rating) {
-    //   return 'Rate this movie';
-    //
-    //   })
-    //   return ratingObj.rating;
-    // }
   }
-
-  // iterate through props.userInfo.userRatings
-
 
   deleteFromApi = (event) => {
     event.preventDefault();

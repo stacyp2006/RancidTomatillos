@@ -41,18 +41,5 @@ describe('Homepage', () => {
     };
     render(<Homepage home={fakeState}/>);
     expect(screen.getByText("Welcome, Rick!")).toBeInTheDocument();
-  });
-
-  // it('should display a logout link if a user is logged in', () => {
-  //   const fakeHome = {
-  //     movies: [],
-  //     loggedIn: true,
-  //     id: 1,
-  //     name: 'Rick',
-  //     userRating: [1, 2]
-  //   };
-  //   render(<Homepage home={fakeHome}/>);
-  //   expect(screen.getByText('Logout')).toBeInTheDocument();
-  // })
-  
+  });  
 })

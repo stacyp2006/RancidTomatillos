@@ -33,7 +33,7 @@ class Login extends Component {
       alert('Invalid login information. Please try again.');
     }
   }
-//refactor error handling for 'User not found'
+
   resetInputs = () => {
     this.setState({email: '', password: ''})
   }

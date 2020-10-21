@@ -127,5 +127,4 @@ describe('Movies', () => {
 
     expect(screen.getByText("User Rating: Rate this movie")).toBeInTheDocument();
   });
-
 })

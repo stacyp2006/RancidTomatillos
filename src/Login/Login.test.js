@@ -60,11 +60,4 @@ describe('Login', () => {
     const mockCall = await waitFor(() => fakeAddUser)
     expect(mockCall).toHaveBeenCalled();
   });
-
-
 })
-
-//test when user logs in that these things show in document:
-  //logout?, user ratings
-  //test for displaying logout link in homepage instead???
-  // either shows avg. rating or rate this message
