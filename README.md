@@ -49,10 +49,10 @@
 ## In Action
 
 ### Home View
-![home view](/Users/stacypotten/turing/3module/rancidtomatillos/public/images/Home page.png)
+![home view](./public/images/Home page.png)
 
 ### Movie View
-![movie view](/Users/stacypotten/turing/3module/rancidtomatillos/public/images/movie view.png)
+![movie view](./public/images/movie view.png)
 
 ### Login Action
 
