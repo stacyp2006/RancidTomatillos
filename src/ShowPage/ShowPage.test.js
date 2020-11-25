@@ -135,32 +135,32 @@ describe('ShowPage', () => {
     expect(await waitFor( () => screen.queryByText("Delete Rating"))).not.toBeInTheDocument();
   });
 
-  it('should delete a user rating when the delete button is clicked', async() => {
-    const fakeDelete = deleteUserRating.mockResolvedValueOnce([])
-    singleMovieFetch.mockResolvedValue(
-      {
-        movie: {
-        id: 694919,
-        title: "Money Plane",
-        poster_path: "poster.jpg",
-        backdrop_path: "backdrop.jpg",
-        release_date: "2020-09-29",
-        overview: "It's a movie.",
-        genres: ["Action"],
-        budget: 4,
-        revenue: 500,
-        runtime: 82,
-        tagline: "It sucks.",
-        average_rating: 5
-        }
-      }
-    );
-
-    render(<ShowPage userInfo={fakeUser1} {...movieToRender}/>);
-
-    userEvent.click(screen.getByText("Delete Rating"));
-
-    const mockDelete = await waitFor(() => fakeDelete);
-    expect(mockDelete).toHaveBeenCalled();
-  });
+  // it('should delete a user rating when the delete button is clicked', async() => {
+  //   const fakeDelete = deleteUserRating.mockResolvedValueOnce([])
+  //   singleMovieFetch.mockResolvedValue(
+  //     {
+  //       movie: {
+  //       id: 694919,
+  //       title: "Money Plane",
+  //       poster_path: "poster.jpg",
+  //       backdrop_path: "backdrop.jpg",
+  //       release_date: "2020-09-29",
+  //       overview: "It's a movie.",
+  //       genres: ["Action"],
+  //       budget: 4,
+  //       revenue: 500,
+  //       runtime: 82,
+  //       tagline: "It sucks.",
+  //       average_rating: 5
+  //       }
+  //     }
+  //   );
+  //
+  //   render(<ShowPage userInfo={fakeUser1} {...movieToRender}/>);
+  //
+  //   userEvent.click(screen.getByText("Delete Rating"));
+  //
+  //   const mockDelete = await waitFor(() => fakeDelete);
+  //   expect(mockDelete).toHaveBeenCalled();
+  // });
 })
